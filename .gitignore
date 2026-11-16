@@ -1,0 +1,20 @@
+# data and outputs (live on the shared drive)
+data/
+outputs/
+*.npy
+*.pt
+*.pth
+*.ckpt
+
+# secrets
+.env
+*.key
+
+# python / notebooks
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+
+# OS
+.DS_Store
