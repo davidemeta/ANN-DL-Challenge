@@ -1,4 +1,4 @@
-# AN2DL Challenge Playbook (v6) — Part I: Strategy and Techniques
+# AN2DL Challenge Playbook (v6.1) — Part I: Strategy and Techniques
 
 - **Part I — Strategy and Techniques (this file):** Guiding principles, Day 0 setup, data and validation, model family selection, training priorities and techniques, inference/ensembling, error catalog, and operational checklists.
 - **Part II — Code ([AN2DL_Playbook_Part2_Code.md](./AN2DL_Playbook_Part2_Code.md)):** Verification status, module map for [an2dl_toolkit.py](../src/an2dl_toolkit.py) and [smoke_test.py](../tests/smoke_test.py), and standalone blocks (D and H).
@@ -221,7 +221,7 @@ Each owner explores their assigned family under shared rules:
 
 Fixing seeds (Python, NumPy, PyTorch, DataLoader workers) makes runs *comparable*, not bit-for-bit identical: some GPU operations remain non-deterministic. Full deterministic mode slows training and should be reserved for exact reproduction.
 
-**DataLoader.** With `num_workers > 0`, workers respawn every epoch unless persistent workers are enabled (which saves seconds to tens of seconds per epoch on image datasets). Use `pin_memory` on GPU and `drop_last=True` in training (a trailing 1-sample batch breaks BatchNorm and MixUp). Tune `num_workers` to the machine (2 is a reasonable starting point on 2-vCPU Colab free).
+**DataLoader.** With `num_workers > 0`, workers respawn every epoch unless persistent workers are enabled (which saves seconds to tens of seconds per epoch on image datasets). Use `pin_memory` on GPU and `drop_last=True` in training (a trailing 1-sample batch breaks BatchNorm and MixUp). Tune `num_workers` to the machine (2 is a reasonable starting point on 2-vCPU Colab free). For small-resolution datasets that fit comfortably in GPU VRAM as `uint8` tensors (e.g., 32×32 or 64×64 images), keeping images on GPU and running normalization/vectorized augmentations per batch eliminates CPU DataLoader bottlenecks.
 
 ### 2.2 Data Inspection and Cleaning (Pre-Split and Post-Baseline OOF)
 
@@ -231,7 +231,7 @@ Dataset quality checks happen at **two distinct points** in Phase 1:
    - **Corrupted samples:** check for near-zero variance (flat/constant images or series), `NaN`/`Inf`, anomalous resolutions or sequence lengths.
    - **Duplicates and near-duplicates:** detect via perceptual hashing or backbone embeddings. Duplicates with **conflicting labels** are not automatically synthetic noise—they may be genuinely ambiguous cases and must be **inspected manually**, not auto-dropped. Keep all remaining duplicates in the same fold (§2.4).
 2. **Post-baseline (Days 2–3, after running the initial 5-fold baseline):**
-   - **Embedding outliers and highest-confidence OOF errors:** rank training samples by distance to class centroids / test set in embedding space (e.g., DINOv2 or MiniRocket) and inspect the baseline's highest-loss OOF errors. Use this strictly as a **ranking for manual inspection**, never as a blind filter (which can mistake domain shift for garbage).
+   - **Embedding outliers and highest-confidence OOF errors:** rank training samples by distance to class centroids / test set in embedding space (e.g., DINOv2 or MiniRocket) and inspect the baseline's highest-loss OOF errors (plus per-class accuracy and top confusion pairs). For vision tasks, run **CAM / Grad-CAM** on high-loss or suspiciously easy samples to check whether the model relies on spurious background artifacts, borders, or watermarks instead of the object. Use this strictly as a **ranking for manual inspection**, never as a blind filter (which can mistake domain shift for garbage).
 
 **CV caution:** removing outliers from validation folds makes CV optimistic and unrepresentative of a test set that may contain similar samples. **Clean only the training split** of each fold (logging IDs in `cleaning_ids.csv`) and report validation metrics on both cleaned and full validation (using full validation as the reference).
 
@@ -298,13 +298,17 @@ Reference for choosing families on Day 1 (§1.2) and iterating during Days 3–9
 
 ### 3.2 Images — Classification
 
-**(a) Classical.** CNNs from scratch (LeNet → VGG → ResNet) with BatchNorm, dropout, basic augmentations. Good for understanding the problem and fast baselines on small images.
+**(a) Classical (and from-scratch rules).** CNNs from scratch (VGG-style 3×3 blocks → ResNet / pre-activation WideResNet, DenseNet, ResNeXt, MobileNet/MBConv+SE) using **Global Average Pooling (GAP)** instead of heavy Flatten+MLP heads, BatchNorm, dropout, and basic augmentations. Good for understanding the problem, fast baselines on small images, or competitions that forbid pretrained weights:
 
-**(b) Strong default.** *Transfer learning* from pretrained backbones (ResNet/EfficientNet, ConvNeXt/ConvNeXt V2, Swin, ViT, DINOv2) with full fine-tuning and a well-chosen learning rate:
+- on natively small images (e.g., 32×32 / 64×64), prefer a 3×3 stride-1 stem without aggressive early downsampling;
+- **do not pick blocks by parameter count or MACs alone:** depthwise-expanded or concatenated blocks (MBConv, DenseNet) can have few parameters yet large activation memory (VRAM) and lower real GPU throughput than simpler residual blocks—benchmark actual images/sec with `torch.cuda.synchronize()`.
 
-- start with simple fine-tuning: AdamW, warmup + cosine decay, label smoothing;
-- domain-appropriate augmentations (flips, crops, color; exclude label-altering transforms such as flips on digits or asymmetric anatomy);
-- resolution: moderate upscaling on natively small images (e.g., 64→128/224) often helps by matching pretraining scale. It adds no information, so **measure** in CV and avoid extreme resolutions that waste VRAM.
+**(b) Strong default.** *Transfer learning* from pretrained backbones (ResNet/EfficientNet, ConvNeXt/ConvNeXt V2, Swin, ViT, DINOv2) with fine-tuning and a well-chosen learning rate:
+
+- test direct fine-tuning (AdamW, warmup + cosine decay, label smoothing) and, on small datasets, **two-stage transfer learning** (brief head warm-up with frozen backbone, then unfreezing the last stages or full backbone at a 10–100× lower LR — see §4.4);
+- domain-appropriate augmentations across geometric, photometric, and random-erasing families (exclude label-altering transforms such as flips on digits or asymmetric anatomy);
+- resolution: moderate upscaling on natively small images (e.g., 64→128/224) often helps by matching pretraining scale. It adds no information, so **measure** in CV and avoid extreme resolutions that waste VRAM;
+- **explainability check:** inspect **CAM / Grad-CAM** overlays on validation errors and top-confidence predictions to catch shortcut learning (background, borders, scanner stamps) early.
 
 **(c) Advanced.**
 
@@ -327,6 +331,7 @@ Reference for choosing families on Day 1 (§1.2) and iterating during Days 3–9
 - Lovász-Softmax in the final epochs as a differentiable IoU surrogate.
 - Diverse architecture ensembles; flip TTA (if orientation is not semantic).
 - Mask post-processing (small-component removal, hole filling), validated in CV.
+- **Weakly supervised segmentation / ROI cropping:** when only image-level labels are available, a GAP + linear classifier (equivalently a Network-in-Network 1×1 conv + GAP head) yields **Class Activation Maps (CAM)**, and **Grad-CAM** generalizes to any intermediate stage (`H4` in Part II). Thresholding upsampled maps gives rough localization masks or foreground crops.
 
 **(d) Pitfalls.** Failing to upsample SegFormer logits (1/4 resolution) to mask resolution before loss and blending; incompatible encoder-decoder pairs (stride/stage count); augmenting image without mask.
 
@@ -370,6 +375,7 @@ Reference for choosing families on Day 1 (§1.2) and iterating during Days 3–9
 
 ### 3.6 Other Problem Types (Brief Notes)
 
+- *Image retrieval / metric learning*: extract L2-normalized pooled backbone embeddings and rank gallery items by cosine similarity, evaluating with `Precision@k` / `mAP`; fine-tune with metric losses if retrieval is the official task. The same normalized embeddings serve §2.2 near-duplicate detection and outlier ranking.
 - *Sequences / text*: TF-IDF + linear baseline first, then fine-tuned pretrained RNN/Transformer.
 - *Anomaly detection*: reconstruction (autoencoders), feature-space distances, one-class models; validation requires extra care because anomalies are rare.
 - *Image regression*: same setup as classification with a regression head, suitable loss (Huber/MAE), and target normalization.
@@ -412,12 +418,13 @@ Qualitative, *indicative* ratings: actual gains are dataset-dependent and must b
 ### 4.3 Regularization and Augmentation
 
 - Dropout, weight decay, small label smoothing (e.g., 0.05–0.1).
-- **Domain-consistent augmentations:** never apply transforms that alter the label.
+- **Domain-consistent augmentations:** never apply transforms that alter the label. Organize image transforms by family — **geometric** (flips, affine), **photometric** (color jitter), and **random erasing / cutout** — and ablate them systematically rather than stacking every transform blindly (over-augmenting small datasets can degrade CV).
 - Mixup/CutMix require losses supporting 2D soft targets; designed for classification, not directly for segmentation or time series.
 
 ### 4.4 Transfer Learning
 
-- Start from pretrained weights; full fine-tuning with a lower LR than training from scratch.
+- Start from pretrained weights; full fine-tuning with a lower LR than training from scratch, or **two-stage transfer learning** (freeze the backbone to warm up the randomly initialized classifier head first, then unfreeze the top stages or full backbone at a 10–100× lower LR) when data is limited.
+- **Freezing correctly in PyTorch:** setting `requires_grad_(False)` alone is not enough—calling `model.train()` puts frozen stages back into training mode, mutating `BatchNorm` running statistics and keeping `Dropout`/`StochasticDepth` active. Override `train()` (or re-call `.eval()` on frozen stages after `model.train()`). On small batches or ImageNet-like domains, also test keeping `BatchNorm` frozen (`bn.eval()`) during fine-tuning (`H3` in Part II).
 - LLRD to restrict early-layer movement.
 - In offline environments, download checkpoints locally and load them as datasets.
 
@@ -456,7 +463,7 @@ Useful when rules allow it and unlabeled data is plentiful. Because it requires 
 
 ### 5.1 Test-Time Augmentation (TTA)
 
-Average predictions across input views (flips, small crops). Use only label-preserving transforms; do not change resolution on ViT/EVA/DINOv2 (positional embeddings) or CNNs if dimensions break total stride divisibility.
+Average predictions across input views (flips, mild shifts/zooms; on **orientation-invariant domains** such as microscopy or aerial imagery, test 90° rotations and full flip+rotation D4 views). Always **select the TTA view set on validation CV**, use only label-preserving transforms, and do not change resolution on ViT/EVA/DINOv2 (positional embeddings) or CNNs if dimensions break total stride divisibility.
 
 - **OOF ↔ Test consistency:** generate OOFs **with the same TTA used on test** (`predict_with_tta`); applying TTA only at test time creates a logit-scale mismatch against the OOFs used to fit temperatures and multipliers.
 
@@ -506,6 +513,7 @@ Collected across previous iterations of this playbook; all degrade performance *
 14. **Using the public leaderboard** to pick final submissions.
 15. **OOF ↔ test scale mismatch:** saving fold-averaged `test_logits` instead of `(K, N_test, C)`, or applying TTA on test but not OOF.
 16. **Dropping outliers from validation folds:** inflates CV and breaks correlation with noisy or ambiguous test samples.
+17. **Freezing stages with `requires_grad_(False)` while calling `model.train()`:** frozen `BatchNorm` running stats keep drifting and `Dropout`/`StochasticDepth` stay active in frozen blocks. Explicitly set frozen stages back to `.eval()` after `model.train()`. Similarly, when computing **Grad-CAM** on a frozen stage, set `x.requires_grad_(True)` so autograd builds a graph through the frozen layers.
 
 ### 6.2 Common Process Mistakes
 

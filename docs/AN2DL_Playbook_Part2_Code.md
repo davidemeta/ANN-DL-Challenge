@@ -1,4 +1,4 @@
-# AN2DL Challenge Playbook (v6) — Part II: Code Reference
+# AN2DL Challenge Playbook (v6.1) — Part II: Code Reference
 
 Maps the modules implemented in [an2dl_toolkit.py](../src/an2dl_toolkit.py) and [smoke_test.py](../tests/smoke_test.py) (single source of truth to prevent drift) and keeps standalone modules outside the toolkit (**D** and **H**) inline.
 
@@ -33,7 +33,7 @@ Maps the modules implemented in [an2dl_toolkit.py](../src/an2dl_toolkit.py) and 
 | G (temperature, Caruana, multipliers, nested post-processing)                                                            | **Executed** on synthetic data, including missing class in a fold and three identical models                                                                        |
 | `FastSlidingWindowDataset`, `build_warmup_cosine_scheduler`, `steps_per_epoch`, `forecast_loss` (numerical logic only)   | **Executed with mocked `torch`**: window indices and boundaries, label alignment, scheduler curve, shape checks. Not tested on real PyTorch                         |
 | A, C, E, F (`torch` / `timm` / `torchvision`), `make_loader`, `train_vision_epoch` with accumulation                     | **Not executed**: packages missing in test environment. Run [smoke_test.py](../tests/smoke_test.py) (block I)                                                               |
-| D, H (segmentation, pseudo-label loss, logit adjustment)                                                                 | **Not verified**, not covered by the smoke test                                                                                                                     |
+| D, H (segmentation, pseudo-label loss, logit adjustment, safe freezing, Grad-CAM)                                        | **Not verified**, not covered by the smoke test                                                                                                                     |
 
 First things to check when launching on Colab:
 
@@ -217,6 +217,55 @@ class LogitAdjustedSoftCrossEntropy(nn.Module):
         else:  # Soft labels from Mixup / CutMix [B, Num_Classes]
             log_probs = F.log_softmax(adj_logits, dim=-1)
             return -(targets * log_probs).sum(dim=-1).mean()
+```
+
+**H3 — Safe backbone / BatchNorm freezing** for two-stage transfer learning → fine-tuning ([Part I §4.4](./AN2DL_Playbook_Part1_Strategy.md#44-transfer-learning) and [§6.1 #17](./AN2DL_Playbook_Part1_Strategy.md#61-silent-technical-bugs-already-encountered)). Unverified.
+
+```python
+import torch.nn as nn
+
+def freeze_stages(modules):
+    """Disable gradients on frozen modules (call once before creating the optimizer)."""
+    for m in modules:
+        m.requires_grad_(False)
+        m.eval()
+
+def keep_frozen_in_eval(model, frozen_modules=(), freeze_bn=False):
+    """Call right after `model.train()` (or inside an overridden `train()` method) so frozen
+    BatchNorm running stats do not drift and Dropout/StochasticDepth stay off in frozen stages."""
+    for m in frozen_modules:
+        m.eval()
+    if freeze_bn:
+        for m in model.modules():
+            if isinstance(m, nn.modules.batchnorm._BatchNorm):
+                m.eval()
+```
+
+**H4 — Grad-CAM diagnostic & weakly supervised masking** ([Part I §2.2](./AN2DL_Playbook_Part1_Strategy.md#22-data-inspection-and-cleaning-pre-split-and-post-baseline-oof), [§3.2](./AN2DL_Playbook_Part1_Strategy.md#32-images--classification), [§3.3](./AN2DL_Playbook_Part1_Strategy.md#33-images--semantic-segmentation)). Works on any convolutional stage, including frozen backbones (`x_in.requires_grad_(True)`). Unverified.
+
+```python
+import torch
+import torch.nn.functional as F
+
+def grad_cam(model, x, target_layer, classes):
+    """Grad-CAM for a batch [B, C, H, W] on any conv layer; returns [B, H, W] maps in [0, 1] on CPU.
+    Threshold (e.g., >= 0.5) for rough weakly supervised foreground masks."""
+    model.eval()
+    stored = {}
+    handle = target_layer.register_forward_hook(lambda _m, _inp, out: stored.update(act=out))
+    try:
+        x_in = x.detach().clone().requires_grad_(True)  # ensures gradients reach frozen stages too
+        logits = model(x_in)
+        act = stored['act']
+        cls = torch.as_tensor(classes, device=logits.device)
+        score = logits[torch.arange(len(x_in), device=logits.device), cls].sum()
+        grads, = torch.autograd.grad(score, act)
+    finally:
+        handle.remove()
+    alphas = grads.mean(dim=(2, 3), keepdim=True)
+    cam = F.relu((alphas * act).sum(dim=1, keepdim=True))
+    cam = F.interpolate(cam, size=x.shape[-2:], mode='bilinear', align_corners=False)[:, 0]
+    return (cam / (cam.amax(dim=(1, 2), keepdim=True) + 1e-8)).detach().cpu()
 ```
 
 ---
