@@ -728,17 +728,17 @@ def caruana_logloss_weights(probs_list, y_true, n_iterations=50):
 
     return weights / float(n_iterations)
 
-def fit_multipliers_coord_ascent(probs, y_true, n_cycles=2):
+def fit_multipliers_coord_ascent(probs, y_true, n_cycles=2, average='weighted'):
     n_classes = probs.shape[1]
     mults = np.ones(n_classes, dtype=np.float64)
-    best_f1 = f1_score(y_true, np.argmax(probs, axis=1), average='macro')
+    best_f1 = f1_score(y_true, np.argmax(probs, axis=1), average=average)
     log_grid = np.geomspace(0.25, 4.0, 61)
     for _ in range(n_cycles):
         for c in range(n_classes):
             best_m = mults[c]
             for m in log_grid:
                 mults[c] = m
-                score = f1_score(y_true, np.argmax(probs * mults, axis=1), average='macro')
+                score = f1_score(y_true, np.argmax(probs * mults, axis=1), average=average)
                 if score > best_f1 + 1e-6:
                     best_f1 = score
                     best_m = m
@@ -746,8 +746,9 @@ def fit_multipliers_coord_ascent(probs, y_true, n_cycles=2):
     # Rescaling leaves argmax unchanged (scale-invariant); geometric mean centers values around 1.
     return mults / np.exp(np.mean(np.log(mults)))
 
-def full_nested_postprocessing(oof_logits_list, test_logits_list, y_true, folds, min_f1_gain=0.002):
+def full_nested_postprocessing(oof_logits_list, test_logits_list, y_true, folds, min_f1_gain=0.002, average='weighted'):
     """
+    average='weighted' matches the AN2DL 2026-27 metric (weighted F1); pass 'macro' for Macro-F1 challenges.
     Runs Temperature Scaling, Caruana Ensemble Selection, and Coordinate Ascent
     INSIDE the fold loop (fit on K-1 folds, evaluated on the held-out K-th fold) for zero-leak F1 estimation.
     If test_logits_list[m] is 3D (K, N_test, C) — one model per fold — mean_temps[m] is applied
@@ -782,16 +783,16 @@ def full_nested_postprocessing(oof_logits_list, test_logits_list, y_true, folds,
         nested_blend_probs[va] = va_blend
 
         # 3. Fit class multipliers on the K-1 training folds and apply to the held-out fold
-        m_f = fit_multipliers_coord_ascent(tr_blend, y_true[tr])
+        m_f = fit_multipliers_coord_ascent(tr_blend, y_true[tr], average=average)
         nested_thresh_preds[va] = np.argmax(va_blend * m_f, axis=1)
 
         fold_temps.append(temps_f)
         fold_weights.append(w_f)
         fold_mults.append(m_f)
 
-    f1_blend_only = f1_score(y_true, np.argmax(nested_blend_probs, axis=1), average='macro')
-    f1_with_mults = f1_score(y_true, nested_thresh_preds, average='macro')
-    print(f"[Nested OOF] Macro-F1 Pure Blend: {f1_blend_only:.5f} | With Multipliers: {f1_with_mults:.5f}")
+    f1_blend_only = f1_score(y_true, np.argmax(nested_blend_probs, axis=1), average=average)
+    f1_with_mults = f1_score(y_true, nested_thresh_preds, average=average)
+    print(f"[Nested OOF] {average}-F1 Pure Blend: {f1_blend_only:.5f} | With Multipliers: {f1_with_mults:.5f}")
 
     # Test set aggregation
     mean_temps = np.mean(fold_temps, axis=0)
