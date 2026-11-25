@@ -1,5 +1,8 @@
 # AN2DL Challenge Playbook (v6.1) — Part I: Strategy and Techniques
 
+> **2026-27 challenge ("Flying SPAGHETTI", 10-class 256×256 image classification, weighted F1):** read [Part 0 — Challenge Brief](./AN2DL_Playbook_Part0_Challenge_2627.md) first. It fixes the §1.1 answers, real calendar (Nov 25 → Dec 8), deliverables (report + executed notebooks + email) and the corruption-handling plan; it overrides this file where they differ. Relevant sections here: §2, §3.2, §4, §5. Where this file says *Macro-F1*, read *weighted F1* (class multipliers matter much less).
+
+- **Part 0 — Challenge Brief 2026-27:** [AN2DL_Playbook_Part0_Challenge_2627.md](./AN2DL_Playbook_Part0_Challenge_2627.md)
 - **Part I — Strategy and Techniques (this file):** Guiding principles, Day 0 setup, data and validation, model family selection, training priorities and techniques, inference/ensembling, error catalog, and operational checklists.
 - **Part II — Code ([AN2DL_Playbook_Part2_Code.md](./AN2DL_Playbook_Part2_Code.md)):** Verification status, module map for [an2dl_toolkit.py](../src/an2dl_toolkit.py) and [smoke_test.py](../tests/smoke_test.py), and standalone blocks (D and H).
 
@@ -450,6 +453,9 @@ Useful when rules allow it and unlabeled data is plentiful. Because it requires 
 - **Subtle leakage:** generating pseudo-labels from an ensemble containing models that trained on the target validation fold makes subsequent CV optimistic. Fix: generate **per-fold pseudo-labels** using only models that never saw that fold's validation split.
 - A high fixed confidence threshold (e.g., 0.98) selects very few samples poorly under Mixup and label smoothing: prefer per-class selection (top-q) or calibrated *soft labels* with a reduced loss weight.
 - Expect modest gains at the cost of a full retraining cycle.
+- **Teacher = per-fold cross-family blend** (A_k + B_k + C_k), also for the final run: an all-fold teacher gives marginal gains, makes CV unverifiable and reduces student diversity.
+- **Thresholds from OOF precision:** calibrate first (temperature), then pick per-class confidence thresholds where measured OOF precision is high (e.g., ≥ 95%); never validate on pseudo-labeled samples; no human labeling of test data.
+- Full step-by-step protocol for 2026-27: [Part 0 §0.5b](./AN2DL_Playbook_Part0_Challenge_2627.md#05b-pseudo-labeling-protocol-optional-only-if-allowed).
 
 ### 4.8 Techniques to Treat with Skepticism
 

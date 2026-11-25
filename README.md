@@ -1,6 +1,6 @@
 # AN2DL Challenge
 
-Shared repo for the Artificial Neural Networks & Deep Learning challenge (Polimi).
+Shared repo for the Artificial Neural Networks & Deep Learning challenge (Polimi), A.Y. 2026-27: **"Flying SPAGHETTI"** — 10-class classification of 256×256 RGB telescope images, metric weighted F1, Nov 25 → Dec 8 2026 ([Kaggle](https://www.kaggle.com/competitions/an2dl2627)).
 
 ## Layout
 - `src/` – shared code (lead only): `an2dl_toolkit.py`, `metric.py`, `data.py`, `submit.py`
@@ -10,7 +10,7 @@ Shared repo for the Artificial Neural Networks & Deep Learning challenge (Polimi
 - `runs/` – one small JSON per run (`{family}_{model}_s{seed}.json`)
 - `ensemble/` – blending and post-processing
 - `tests/` – `smoke_test.py`
-- `docs/` – Playbook: [Part I – Strategy](docs/AN2DL_Playbook_Part1_Strategy.md), [Part II – Code](docs/AN2DL_Playbook_Part2_Code.md)
+- `docs/` – Playbook: [Part 0 – Challenge 2026-27](docs/AN2DL_Playbook_Part0_Challenge_2627.md) (read first), [Part I – Strategy](docs/AN2DL_Playbook_Part1_Strategy.md), [Part II – Code](docs/AN2DL_Playbook_Part2_Code.md)
 
 ## Setup
 ```bash

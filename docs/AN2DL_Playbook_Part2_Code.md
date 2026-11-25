@@ -2,6 +2,7 @@
 
 Maps the modules implemented in [an2dl_toolkit.py](../src/an2dl_toolkit.py) and [smoke_test.py](../tests/smoke_test.py) (single source of truth to prevent drift) and keeps standalone modules outside the toolkit (**D** and **H**) inline.
 
+- **Part 0 — Challenge Brief 2026-27:** [AN2DL_Playbook_Part0_Challenge_2627.md](./AN2DL_Playbook_Part0_Challenge_2627.md)
 - **Part I — Strategy and Techniques:** [AN2DL_Playbook_Part1_Strategy.md](./AN2DL_Playbook_Part1_Strategy.md)
 - **Core Toolkit (blocks A, B, C, E, F, G):** [an2dl_toolkit.py](../src/an2dl_toolkit.py)
 - **Test Suite (block I):** [smoke_test.py](../tests/smoke_test.py)
@@ -178,8 +179,8 @@ Temperature scaling, Caruana selection on log-loss (explicit `labels=` and symme
 - `_test_probs(logits_m, T)`
 - `fit_temperature(logits, y_true)`
 - `caruana_logloss_weights(probs_list, y_true, n_iterations=50)`
-- `fit_multipliers_coord_ascent(probs, y_true, n_cycles=2)`
-- `full_nested_postprocessing(oof_logits_list, test_logits_list, y_true, folds, min_f1_gain=0.002)`
+- `fit_multipliers_coord_ascent(probs, y_true, n_cycles=2, average='weighted')`
+- `full_nested_postprocessing(oof_logits_list, test_logits_list, y_true, folds, min_f1_gain=0.002, average='weighted')` — default `'weighted'` = official 2026-27 metric ([Part 0 §0.1](./AN2DL_Playbook_Part0_Challenge_2627.md#01-fact-sheet))
 
 ---
 
