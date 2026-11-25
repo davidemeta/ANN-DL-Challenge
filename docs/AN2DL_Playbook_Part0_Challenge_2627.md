@@ -1,4 +1,4 @@
-# AN2DL Challenge Playbook (v7.2) — Part 0: Challenge Brief 2026-27 ("Flying SPAGHETTI")
+# AN2DL Challenge Playbook (v7.5) — Part 0: Challenge Brief 2026-27 ("Flying SPAGHETTI")
 
 Challenge-specific layer on top of the generic playbook. Where this file and Part I disagree, **this file wins** for the 2026-27 challenge.
 
@@ -26,7 +26,7 @@ Challenge-specific layer on top of the generic playbook. Where this file and Par
 | Dates | **Nov 25 00:00 → Dec 8 23:59** (CET) |
 | Team | 4 members, registered in the Kaggle "Team" tab; Kaggle nickname = Google-form nickname |
 | External data | ❌ **Forbidden** — only the provided dataset |
-| Pretrained models | ✅ **Allowed** (ImageNet / DINOv2 / CLIP backbones via `timm`, `torchvision`, HF) |
+| Pretrained models | ✅ **Allowed** — team decision: **CNN backbones only** (ImageNet weights via `timm` / `torchvision`); no transformers, since the course covered only CNN variants for image classification and we must defend every choice at the oral |
 | Individual requirement | ⚠️ **Every member must make ≥ 1 submission**, otherwise that member gets **0** |
 | Code sharing between teams | ❌ Forbidden (identical submissions → 40/40, 60/0 or 0/0 split) |
 | Grade | LB + report → **0–6 pts** (same for the team), +0.5 for exceptional work, then **individual oral** |
@@ -49,7 +49,7 @@ Challenge-specific layer on top of the generic playbook. Where this file and Par
 | 9 | Lasagna | Edge-on with bulge | 8 |
 
 The taxonomy matches the public **Galaxy10 DECaLS** dataset (Galaxy Zoo volunteer labels, 256×256 g/r/z composites). Consequences:
-- **Do NOT download Galaxy10 / Galaxy Zoo data** — external data is forbidden, and the test set very likely comes from it (would also be flagged as cheating). The same applies to checkpoints **fine-tuned on Galaxy Zoo** (e.g., Zoobot): ask on the forum before even considering them; default = generic ImageNet/DINOv2/CLIP weights only.
+- **Do NOT download Galaxy10 / Galaxy Zoo data** — external data is forbidden, and the test set very likely comes from it (would also be flagged as cheating). The same applies to checkpoints **fine-tuned on Galaxy Zoo** (e.g., Zoobot): ask on the forum before even considering them; default = generic ImageNet CNN weights only.
 - Labels come from volunteer votes → **intrinsic label noise** even before the organizers' corruption, especially within {2,3}, {5,6,7}, {8,9}, {0,1}. Ceiling accuracy is well below 100% (published Galaxy10 DECaLS results are roughly in the 85–90% range with fine-tuned CNNs).
 - Galaxies are **centered** in the frame and have **no preferred orientation** → full rotation/flip invariance (D4 + arbitrary angles) is label-preserving for all 10 classes (an edge-on disk stays edge-on when rotated). Arbitrary-angle rotation needs care with corners (rotate then center-crop, or reflect padding).
 - **Color carries information** (ellipticals are redder, spirals bluer arms) → photometric augmentations must be mild.
@@ -79,9 +79,9 @@ The taxonomy matches the public **Galaxy10 DECaLS** dataset (Galaxy Zoo voluntee
 | Day | Date | Phase | Must-have |
 | --- | --- | --- | --- |
 | 0 | Tue Nov 25 | Rules, data download, repo, smoke test | Download data (2.69 GB) to the shared drive, everyone joins the team, ask the forum about test usage |
-| 1–2 | Nov 26–27 | EDA + **corruption audit** (§0.4) | Baseline 5-fold, **first submission by every member** |
+| 1–2 | Nov 26–27 | EDA + **corruption audit** (§0.4) | Embeddings computed (audit + family D baseline), first 5-fold CNN baseline, **first submission by every member** |
 | 3 | Fri Nov 28 | **Freeze gate** | `train_folds.csv`, `cleaning_ids.csv`, `metric.py` frozen |
-| 3–9 | Nov 28 – Dec 4 | Family exploration | Ensemble dry-run on Dec 1 |
+| 3–9 | Nov 28 – Dec 4 | Family exploration (A, B, C, D) | Ensemble dry-run on Dec 1 (lead) |
 | 9–12 | Dec 4 – Dec 7 | Convergence | Final configs on all folds; **executed notebooks saved**; report draft started Dec 5 |
 | 12 | Sun Dec 7 | Training cutoff | Report ~final, email draft ready |
 | 13 | Mon Dec 8 | Blend + submit + send | Final 2 submissions selected, PDF + zip emailed **well before 23:59** |
@@ -96,7 +96,7 @@ The story and the Data tab (*"not every entry in the archive can be trusted"*) s
 
 | Contamination type | What it looks like | How to detect | What to do |
 | --- | --- | --- | --- |
-| **Out-of-domain intruders** ("Area 51") | Images that are not galaxies at all (cartoons, objects, memes) | Embedding outliers (DINOv2/CLIP k-NN distance), near-duplicate clusters, visual grid inspection | **Remove from train**; check if the same kind appears in test |
+| **Out-of-domain intruders** ("Area 51") | Images that are not galaxies at all (cartoons, objects, memes) | Embedding outliers (k-NN distance on pretrained CNN embeddings), near-duplicate clusters, visual grid inspection | **Remove from train**; check if the same kind appears in test |
 | **Exact / near duplicates** | Same image repeated, possibly with different labels | Perceptual hash (pHash/dHash) + cosine similarity of embeddings | Keep in the same fold; inspect label conflicts manually |
 | **Color distortions** | Channel swaps, tints, inverted colors, saturation shifts | Per-image channel mean/std histograms, hue statistics, outlier scores | Either remove or **train with matching augmentations** if test contains them too |
 | **Systematic artifacts** | Overlaid patterns, stripes, grids, watermarks, constant patches, periodic noise | 2D FFT spectrum peaks, row/column mean profiles, pixel-wise median over images, Grad-CAM focusing away from the central galaxy | Mask/inpaint if fixed location; augmentation; **check for shortcut learning** |
@@ -116,7 +116,7 @@ The story and the Data tab (*"not every entry in the archive can be trusted"*) s
 - [ ] Grid of 64 random images per class + 64 random test images.
 - [ ] Per-image stats: mean/std per channel, Laplacian variance, fraction of saturated pixels; plot histograms and look at the tails.
 - [ ] pHash duplicates within train, within test, and **train ↔ test** (train↔test duplicates: their label is a free hint for the corresponding test prediction, but do not let them distort CV).
-- [ ] DINOv2 (or `convnext`/CLIP) embeddings for all images → UMAP/t-SNE coloured by class and by train/test; k-NN outlier score.
+- [ ] Pretrained CNN embeddings (ConvNeXt / EfficientNetV2 global-pooled features, 8 D4 views averaged) for all images → UMAP/t-SNE coloured by class and by train/test; k-NN outlier score.
 - [ ] Mean image and FFT magnitude averaged per class (reveals fixed overlays / periodic noise).
 - [ ] Adversarial validation on embeddings (train vs test AUC).
 - [ ] Output: `shared/cleaning_ids.csv` with columns `id, reason, action` (`drop` / `keep_flag`).
@@ -125,7 +125,7 @@ The story and the Data tab (*"not every entry in the archive can be trusted"*) s
 
 The test set (14,736) is the "new observations"; the train (4,328) is the "archive" that had "a rough couple of weeks". Most likely scenario: **train contains corruptions that test does not** (or a different mix), plus label noise. Treat it as a small **domain adaptation** problem:
 
-1. **Measure the shift on Day 1**: adversarial validation train vs test on DINOv2 embeddings and on simple image stats (per-channel mean/std, sharpness, noise level). AUC ≈ 0.5 → no shift; AUC ≫ 0.6 → find which images drive it (top train images most "un-test-like" = prime cleaning candidates).
+1. **Measure the shift on Day 1**: adversarial validation train vs test on CNN embeddings and on simple image stats (per-channel mean/std, sharpness, noise level). AUC ≈ 0.5 → no shift; AUC ≫ 0.6 → find which images drive it (top train images most "un-test-like" = prime cleaning candidates).
 2. **Make validation look like test**: once corrupted train images are identified, evaluate CV on the *clean-looking* validation subset (the one resembling test) as the primary metric, the full fold as secondary. Check that it tracks the public LB from the first submissions.
 3. **Make train look like test**: remove or repair corruptions that never appear in test (e.g., undo channel swaps / color casts if the transformation is invertible — repairing keeps precious labeled samples, train is small).
 4. **Make test look like train only if needed**: if test has degradations train lacks (e.g., noise, blur, different color calibration), add them as augmentations.
@@ -141,20 +141,38 @@ The test set (14,736) is the "new observations"; the train (4,328) is the "archi
 - Report CV on the **full validation folds** (intruders/corrupted kept) *and* on cleaned validation; use the one that best tracks the public LB.
 - Metric everywhere: `src/metric.py::score` (weighted F1). Weighted F1 ≈ accuracy-like behaviour dominated by large classes, so **class multipliers usually give little**; keep them only through nested CV (`full_nested_postprocessing(..., average='weighted')`).
 
-### Families (suggested split for 4 people)
+### Families (4 people, 4 families)
 
-| Family | Model | Why |
-| --- | --- | --- |
-| **Lead** | Data audit, cleaning, shift analysis, folds, metric; later ensemble | Contamination + shift handling is the highest-leverage work here |
-| **A — Modern CNN** | `convnext_tiny` / `convnext_small` (IN-22k), alt. `efficientnetv2_s` | Strong fine-tuning at 224–256 px on a T4; good at fine texture (arms, bars) |
-| **B — Self-supervised ViT** | DINOv2 ViT-S/14 → ViT-B/14 fine-tuned with LLRD (input 224 or 252) | Robust features on non-ImageNet domains, natural fit for embeddings/outlier detection and test-set adaptation |
-| **C — Robust / cheap diversity** | `resnet50`/`regnety_032` with heavy rotation aug + noise-robust loss, **or** logistic/k-NN head on frozen DINOv2/CLIP embeddings (+ rotation-averaged embeddings) | Fast, robust to label noise, different errors |
+| Owner | Family | Model | Why |
+| --- | --- | --- | --- |
+| **Lead** | **D — Frozen CNN embeddings** (+ data, validation, ensemble) | Concatenated global-pooled features of **`regnety_160.swag_ft_in1k`** (billions of Instagram images) + **`convnextv2_tiny.fcmae_ft_in22k_in1k`**, averaged over the 8 D4 views → logistic regression or k-NN | Two very different pretrainings → complementary features; reuses the embeddings the lead already computes for the audit (outliers, duplicates, shift); trains in seconds; robust to label noise; first sanity baseline on Day 1–2 |
+| Member 2 | **A — Modern CNN** | **`convnextv2_tiny.fcmae_ft_in22k_in1k`** (main); fallback `convnext_small.fb_in22k_ft_in1k` | Strongest pure CNN available: self-supervised FCMAE + ImageNet-22k pretraining transfers well to new domains; LayerNorm (stable with small batches); 7×7 kernels |
+| Member 3 | **B — Efficient CNN (MBConv + SE)** | **`tf_efficientnetv2_s.in21k_ft_in1k`** (main), `tf_efficientnetv2_m.in21k_ft_in1k` if GPU time allows — **use the in21k weights**, not the IN-1k-only ones | Different design (depthwise MBConv, squeeze-excitation, BatchNorm, compound scaling) → different errors; good accuracy/cost |
+| Member 4 | **C — Residual CNN with large-scale pretraining, robust recipe** | **`regnety_160.swag_ft_in1k`** (main, ~16 GFLOPs, fine at 224 on a T4) or **`resnext50_32x4d.fb_swsl_ig1b_ft_in1k`** (lighter); alt. `eca_nfnet_l0` (no BatchNorm, different design). Heavy rotation aug + noise-robust loss (GCE/SCE, small-loss selection) | Web-scale (Instagram) pretraining = very general features; ResNet-family design is the most course-aligned (easy to explain at the oral, clean Grad-CAM). Avoid plain `torchvision` ResNet-50 v1 weights (clearly weaker); if a ResNet-50 is needed use `resnet50.a1_in1k` |
 
-With only 4,328 train images, a 5-fold × 3 families run is cheap (≈ 3.5k images/fold): one ConvNeXt-T epoch at 224 on a T4 takes well under a minute. The bottleneck is PNG decoding → **pre-decode once to a `uint8` `.npy` array** (4,328×256×256×3 ≈ 850 MB; test ≈ 2.9 GB, keep on disk with `np.load(mmap_mode='r')` or resize to 224 first).
+**Backbone shortlist (CNN only, T4-friendly, strongest first).** ConvNeXt V2 (FCMAE, in22k) > ConvNeXt V1 in22k ≈ EfficientNetV2 in21k ≈ RegNetY-160 SWAG > ECA-NFNet ≈ ResNeXt-50 SWSL / ResNet-50 a1. Pretraining weights matter as much as the architecture. Excluded even though they look like CNNs: CoAtNet, MaxViT, MobileNetV4-hybrid (they contain attention layers). Weight names change across `timm` versions → verify with `timm.list_models('convnextv2*', pretrained=True)` before launching.
+
+**Backbone choice is not the main lever here**: on 4.3k noisy, shifted images a better backbone is typically worth 1–2 points; cleaning, validation, rotation aug/TTA and the ensemble are worth more. Each family runs a **mini-benchmark on Day 3–4** (2 candidate backbones, 1 fold, 10–15 epochs, same recipe) and keeps the best CV, also weighing speed (more experiments per day).
+
+Diversity with CNNs only comes from **architecture design** (ConvNeXt vs MBConv vs ResNet), **training recipe** (loss, augmentation strength, resolution 224 vs 256) and **frozen vs fine-tuned** (D). Check error correlation between families on OOF (Part I §5.2) and push the most correlated family towards a different recipe.
+
+**Lead workload rules.**
+1. **Days 0–3 (until the Nov 28 freeze): shared files first.** Audit, cleaning, folds, metric come before family D; if the audit is late, D waits.
+2. **Days 3–9: family D** (light load: shared files are frozen) + collect runs + ensemble dry-run on Dec 1.
+3. **From Dec 4: back to ensembling** (teacher blends, final blend, pre-submission checks); family D must be closed by then (cheap to finish).
+4. Family D must follow the same contract as the others: same `train_folds.csv`, OOF `(N, 10)` and test `(K, N_test, 10)` logits (for logistic regression, `predict_log_proba` / `decision_function` per fold), same D4 TTA (here: averaged embeddings), a `runs/D_*.json` entry.
+
+**Family D recipe.**
+- Backbones: pretrained CNNs used as frozen feature extractors (`timm.create_model(name, pretrained=True, num_classes=0)` returns the global-pooled feature): **`regnety_160.swag_ft_in1k`** (3024-d) + **`convnextv2_tiny.fcmae_ft_in22k_in1k`** (768-d), concatenated; alternatives `tf_efficientnetv2_m.in21k_ft_in1k` (1280-d), `convnext_small.fb_in22k_ft_in1k` (768-d). Input 224 or 256 with the backbone's normalization.
+- Embed each image under the 8 D4 views and average (rotation-invariant feature); L2-normalize (optionally PCA to 256-d).
+- Heads, per fold: logistic regression (`C` tuned on inner CV, `class_weight` only if nested CV says so), k-NN with cosine distance (k 10–50), optionally a small MLP. Ablate each embedding alone vs the concatenation.
+- Same embeddings feed the audit (k-NN outlier score, duplicates, adversarial validation) → compute once, store `emb_{backbone}_{train,test}.npy` on the shared drive.
+
+With only 4,328 train images, a 5-fold × 3 neural families run is cheap (≈ 3.5k images/fold): one ConvNeXt-T epoch at 224 on a T4 takes well under a minute. The bottleneck is PNG decoding → **pre-decode once to a `uint8` `.npy` array** (4,328×256×256×3 ≈ 850 MB; test ≈ 2.9 GB, keep on disk with `np.load(mmap_mode='r')` or resize to 224 first).
 
 ### Input pipeline
 
-- Native **256×256**: try (i) train 224 random-resized-crop (scale 0.8–1.0, the galaxy is centered and fine structure matters) / test 224 center crop or 256 resize; (ii) native 256 for CNNs. For ViT/DINOv2 use 224 or 252 (= 18×14 patches) and keep the same size for TTA.
+- Native **256×256**: try (i) train 224 random-resized-crop (scale 0.8–1.0, the galaxy is centered and fine structure matters) / test 224 center crop or 256 resize; (ii) native 256 for CNNs. Keep the same input size between training-time evaluation and TTA.
 - Center crop is a cheap trick: outer pixels are mostly background sky/neighbors; a 192–224 center crop resized to 224 may *help*. Ablate.
 - Normalize with the **backbone's** pretraining mean/std.
 
@@ -167,7 +185,7 @@ With only 4,328 train images, a 5-fold × 3 families run is cheap (≈ 3.5k imag
 
 ### Training recipe (starting point)
 
-- AdamW, lr `3e-4` head / LLRD 0.75 (ViT) or ~1e-4 full-model (ConvNeXt), wd 0.05, warmup 5% + cosine, **30–50 epochs** (small dataset), label smoothing 0.1, EMA, AMP `fp16` on T4, batch 32–64.
+- AdamW, lr ~1e-4 full model (≈1e-3 for the new head during a frozen warm-up), optional mild LLRD 0.8 across CNN stages, wd 0.05, warmup 5% + cosine, **30–50 epochs** (small dataset), label smoothing 0.1, EMA, AMP `fp16` on T4, batch 32–64.
 - Small data → test **two-stage transfer** (2–3 epochs frozen backbone, then full unfreeze, Part II H3).
 - **Noise-robust training** (label noise is announced + volunteer labels): label smoothing 0.1–0.2, Symmetric/Generalized CE, small-loss selection (after warmup, ignore the top 5–10% loss samples per batch), or the classic two-pass: train → rank OOF losses → drop/flag worst train samples → retrain (train split only, Part I §2.2).
 - **Imbalance:** weighted F1 favors frequent classes, so start **without reweighting**; try class-balanced sampling / logit adjustment for rare classes only if nested CV improves. Stratified folds are mandatory (rare classes may have < 100 samples).
@@ -181,9 +199,8 @@ With only 4,328 train images, a 5-fold × 3 families run is cheap (≈ 3.5k imag
 ### "Nice to have" if time allows
 
 - **Pseudo-labeling on test** (if allowed): see the dedicated protocol in §0.5b.
-- Rotation-equivariant tricks: averaging embeddings over 8 rotations before a linear head (family C), or group-equivariant CNNs (more report value than LB value).
+- Rotation-equivariant tricks: averaging embeddings over 8 rotations before a linear head (family D), or group-equivariant CNNs (more report value than LB value).
 - Knowledge distillation of the ensemble into one model.
-- CLIP zero-shot as a sanity check for intruder detection ("a photo of a galaxy" vs anything else).
 
 ---
 
@@ -200,12 +217,12 @@ With only 4,328 train images, a 5-fold × 3 families run is cheap (≈ 3.5k imag
 
    | Student validated on | Pseudo-labels generated by | Student trained on |
    | --- | --- | --- |
-   | F1 | blend of **A1 + B1 + C1** (cross-family ensemble is fine) | F2–F5 + test pseudo-labeled by teacher 1 |
-   | F2 | blend of **A2 + B2 + C2** | F1, F3–F5 + test pseudo-labeled by teacher 2 |
+   | F1 | blend of **A1 + B1 + C1 + D1** (cross-family ensemble is fine) | F2–F5 + test pseudo-labeled by teacher 1 |
+   | F2 | blend of **A2 + B2 + C2 + D2** | F1, F3–F5 + test pseudo-labeled by teacher 2 |
    | … | … | … |
 
    Using the blend of all folds as teacher leaks fold-*k* labels into the student evaluated on fold *k* (label of F1 → models trained on F1 → pseudo-labels → student → evaluated on F1) and inflates CV.
-   **The final run stays per-fold too.** A "strongest possible" all-fold teacher for the final models is *not* used: marginal gain over a 3-family per-fold teacher, unverifiable CV, and students that copy the same errors (less ensemble diversity). The final submission is the ensemble of the per-fold students.
+   **The final run stays per-fold too.** A "strongest possible" all-fold teacher for the final models is *not* used: marginal gain over a 4-family per-fold teacher, unverifiable CV, and students that copy the same errors (less ensemble diversity). The final submission is the ensemble of the per-fold students.
 3. **Never validate on pseudo-labeled images.** Validation folds contain only train images with true labels. Pseudo-labeled test images are training data only.
 4. **Calibrate, then choose per-class thresholds on OOF.** A raw "97%" does not mean 97% correct (networks are overconfident):
    - temperature-scale each teacher on OOF logits (`fit_temperature`);
@@ -219,7 +236,7 @@ With only 4,328 train images, a 5-fold × 3 families run is cheap (≈ 3.5k imag
 ### Checklist
 
 - [ ] Forum answer: allowed? (if no → skip this section)
-- [ ] Per-fold teachers A_k + B_k + C_k calibrated (temperature on OOF of the K−1 training folds)
+- [ ] Per-fold teachers A_k + B_k + C_k + D_k calibrated (temperature on OOF of the K−1 training folds)
 - [ ] Per-class thresholds from OOF precision ≥ 95%, per-class caps, count of pseudo-labels per class logged
 - [ ] Soft labels saved as `pseudo_soft_fold{k}.npy` `(N_test, 10)` + mask of selected ids
 - [ ] Students trained per fold, validated on true-label folds only

@@ -64,6 +64,8 @@ The workflow is a **funnel**: a shared frozen base, parallel exploration, then c
 | **Family B**                                              | **\_\_\_\_** (e.g., alternative architecture / self-supervised) | Same                                                                                                                    |
 | **Family C**                                              | **\_\_\_\_** (e.g., classical/non-neural: GBDT, Rocket)       | Same; provides ensemble diversity                                                                                         |
 
+> **2026-27:** 4 families — the lead also owns a cheap **family D** (frozen CNN embeddings + linear/k-NN head); **CNN backbones only** (no transformers: not covered in the course). See [Part 0 §0.5](./AN2DL_Playbook_Part0_Challenge_2627.md#families-4-people-4-families).
+
 Assign **roles** on **Day 0**; confirm the **3 specific families** on **Day 1** right after reviewing the rules (§1.1) and initial data inspection (§3). Two people must not work on the same family.
 
 ### 1.3 Shared Repository (GitHub) and Day 0 Setup
