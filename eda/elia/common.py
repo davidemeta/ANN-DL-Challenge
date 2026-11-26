@@ -20,8 +20,11 @@ HERE = Path(__file__).resolve().parent
 KAGGLE_INPUT = Path("/kaggle/input")
 
 _cands = [HERE.parent / "an2dl2627", HERE / "data", HERE.parent.parent / "data"]
-if KAGGLE_INPUT.exists():                       # on Kaggle: look for train.csv a few levels below /kaggle/input
-    _cands += [p.parent for depth in ("*", "*/*", "*/*/*") for p in KAGGLE_INPUT.glob(f"{depth}/train.csv")]
+if os.environ.get("AN2DL_DATA"):                # optional manual override: os.environ["AN2DL_DATA"] = "/path/to/data"
+    _cands.insert(0, Path(os.environ["AN2DL_DATA"]))
+if KAGGLE_INPUT.exists():                       # on Kaggle: look for train.csv up to 6 levels below /kaggle/input
+    # (Kaggle mounts datasets as /kaggle/input/datasets/<user>/<dataset>/..., competitions as /kaggle/input/<slug>/)
+    _cands += [p.parent for d in range(1, 7) for p in KAGGLE_INPUT.glob("/".join(["*"] * d) + "/train.csv")]
 for _cand in _cands:
     if (_cand / "train.csv").exists() and (_cand / "train").is_dir():
         DATA = _cand
