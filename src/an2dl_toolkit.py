@@ -21,7 +21,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler, QuantileTransformer
 from sklearn.linear_model import RidgeClassifierCV
 from sklearn.calibration import CalibratedClassifierCV
-import lightgbm as lgb
 import timm
 from timm.optim import create_optimizer_v2
 
@@ -56,7 +55,9 @@ def get_amp_config():
     return torch.float16, True
 
 SEED = 42
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+# cuda (Colab/Kaggle) > mps (Apple Silicon) > cpu. AMP stays CUDA-only: MPS trains in fp32.
+DEVICE = torch.device('cuda' if torch.cuda.is_available()
+                      else 'mps' if torch.backends.mps.is_available() else 'cpu')
 AMP_DTYPE, USE_SCALER = get_amp_config()
 
 def make_loader(dataset, batch_size, is_train, num_workers=2, seed=SEED):
@@ -136,6 +137,7 @@ def run_adversarial_validation(X_train, X_test):
     oof_preds = np.zeros(len(X_adv))
     importances = np.zeros(X_train.shape[1])
 
+    import lightgbm as lgb  # lazy: only needed here, absent from the Mac venv
     for tr_idx, va_idx in skf.split(X_adv, y_adv):
         model = lgb.LGBMClassifier(n_estimators=150, learning_rate=0.05, random_state=SEED, verbose=-1)
         model.fit(X_adv[tr_idx], y_adv[tr_idx])

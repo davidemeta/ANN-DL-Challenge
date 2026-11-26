@@ -1,0 +1,1334 @@
+id,category,reason,action
+train_00053,alien,alien face pasted on the image,drop
+train_00054,grainy,grainy degraded copy of train_04079 with swapped label,drop
+train_00055,grainy,grainy degraded copy of train_00464 with swapped label,drop
+train_00056,grainy,grainy degraded copy of train_04053 with swapped label,drop
+train_00058,alien,alien face pasted on the image,drop
+train_00059,grainy,grainy degraded copy of train_00608 with swapped label,drop
+train_00060,grainy,grainy degraded copy of train_01554 with swapped label,drop
+train_00061,grainy,grainy degraded copy of train_03202 with swapped label,drop
+train_00063,alien,alien face pasted on the image,drop
+train_00064,grainy,grainy degraded copy of train_03815 with swapped label,drop
+train_00065,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00066,grainy,grainy degraded copy of train_01345 with swapped label,drop
+train_00073,alien,alien face pasted on the image,drop
+train_00074,grainy,grainy degraded copy of train_03591 with swapped label,drop
+train_00075,grainy,grainy degraded copy of train_04081 with swapped label,drop
+train_00076,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00079,alien,alien face pasted on the image,drop
+train_00080,grainy,grainy degraded copy of train_03733 with swapped label,drop
+train_00081,grainy,grainy degraded copy of train_00330 with swapped label,drop
+train_00082,grainy,grainy degraded copy of train_01526 with swapped label,drop
+train_00085,alien,alien face pasted on the image,drop
+train_00086,grainy,grainy degraded copy of train_00941 with swapped label,drop
+train_00087,grainy,grainy degraded copy of train_03847 with swapped label,drop
+train_00088,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00095,alien,alien face pasted on the image,drop
+train_00096,grainy,grainy degraded copy of train_01547 with swapped label,drop
+train_00097,grainy,grainy degraded copy of train_01745 with swapped label,drop
+train_00098,grainy,grainy degraded copy of train_02062 with swapped label,drop
+train_00103,alien,alien face pasted on the image,drop
+train_00104,grainy,grainy degraded copy of train_00330 with swapped label,drop
+train_00105,grainy,grainy degraded copy of train_00726 with swapped label,drop
+train_00106,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00112,alien,alien face pasted on the image,drop
+train_00113,grainy,grainy degraded copy of train_04079 with swapped label,drop
+train_00114,grainy,grainy degraded copy of train_03806 with swapped label,drop
+train_00115,grainy,grainy degraded copy of train_00960 with swapped label,drop
+train_00126,alien,alien face pasted on the image,drop
+train_00127,grainy,grainy degraded copy of train_00713 with swapped label,drop
+train_00128,grainy,grainy degraded copy of train_03057 with swapped label,drop
+train_00129,grainy,grainy degraded copy of train_01381 with swapped label,drop
+train_00136,alien,alien face pasted on the image,drop
+train_00137,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00138,grainy,grainy degraded copy of train_02010 with swapped label,drop
+train_00139,grainy,grainy degraded copy of train_01662 with swapped label,drop
+train_00141,alien,alien face pasted on the image,drop
+train_00142,grainy,grainy degraded copy of train_01478 with swapped label,drop
+train_00143,grainy,grainy degraded copy of train_00790 with swapped label,drop
+train_00144,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00146,alien,alien face pasted on the image,drop
+train_00147,grainy,grainy degraded copy of train_03562 with swapped label,drop
+train_00148,grainy,grainy degraded copy of train_02522 with swapped label,drop
+train_00149,grainy,grainy degraded copy of train_03684 with swapped label,drop
+train_00162,alien,alien face pasted on the image,drop
+train_00163,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00164,grainy,grainy degraded copy of train_02122 with swapped label,drop
+train_00165,grainy,grainy degraded copy of train_00862 with swapped label,drop
+train_00167,alien,alien face pasted on the image,drop
+train_00168,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00169,grainy,grainy degraded copy of train_03664 with swapped label,drop
+train_00170,grainy,grainy degraded copy of train_04093 with swapped label,drop
+train_00182,alien,alien face pasted on the image,drop
+train_00183,grainy,grainy degraded copy of train_00040 with swapped label,drop
+train_00184,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00185,grainy,grainy degraded copy of train_02619 with swapped label,drop
+train_00198,alien,alien face pasted on the image,drop
+train_00199,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00200,grainy,grainy degraded copy of train_00204 with swapped label,drop
+train_00201,grainy,grainy degraded copy of train_01342 with swapped label,drop
+train_00208,alien,alien face pasted on the image,drop
+train_00209,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00210,grainy,grainy degraded copy of train_01351 with swapped label,drop
+train_00211,grainy,grainy degraded copy of train_04073 with swapped label,drop
+train_00227,alien,alien face pasted on the image,drop
+train_00228,grainy,grainy degraded copy of train_00940 with swapped label,drop
+train_00229,grainy,grainy degraded copy of train_00543 with swapped label,drop
+train_00230,grainy,grainy degraded copy of train_03135 with swapped label,drop
+train_00235,alien,alien face pasted on the image,drop
+train_00236,grainy,grainy degraded copy of train_01249 with swapped label,drop
+train_00237,grainy,grainy degraded copy of train_01655 with swapped label,drop
+train_00238,grainy,grainy degraded copy of train_04210 with swapped label,drop
+train_00264,alien,alien face pasted on the image,drop
+train_00265,grainy,grainy degraded copy of train_00505 with swapped label,drop
+train_00266,grainy,grainy degraded copy of train_00514 with swapped label,drop
+train_00267,grainy,grainy degraded copy of train_04321 with swapped label,drop
+train_00274,alien,alien face pasted on the image,drop
+train_00275,grainy,grainy degraded copy of train_03622 with swapped label,drop
+train_00276,grainy,grainy degraded copy of train_00221 with swapped label,drop
+train_00277,grainy,grainy degraded copy of train_01051 with swapped label,drop
+train_00279,alien,alien face pasted on the image,drop
+train_00280,grainy,grainy degraded copy of train_01303 with swapped label,drop
+train_00281,grainy,grainy degraded copy of train_04072 with swapped label,drop
+train_00282,grainy,grainy degraded copy of train_00513 with swapped label,drop
+train_00284,wrong_label_dup,duplicate of train_01821 with a wrong label (checked by eye),drop
+train_00305,alien,alien face pasted on the image,drop
+train_00306,grainy,grainy degraded copy of train_04210 with swapped label,drop
+train_00307,grainy,grainy degraded copy of train_00022 with swapped label,drop
+train_00308,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00331,alien,alien face pasted on the image,drop
+train_00332,grainy,grainy degraded copy of train_03281 with swapped label,drop
+train_00333,grainy,grainy degraded copy of train_02571 with swapped label,drop
+train_00334,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00363,alien,alien face pasted on the image,drop
+train_00364,grainy,grainy degraded copy of train_00887 with swapped label,drop
+train_00365,grainy,grainy degraded copy of train_00516 with swapped label,drop
+train_00366,grainy,grainy degraded copy of train_02252 with swapped label,drop
+train_00371,alien,alien face pasted on the image,drop
+train_00372,grainy,grainy degraded copy of train_02408 with swapped label,drop
+train_00373,grainy,grainy degraded copy of train_03777 with swapped label,drop
+train_00374,grainy,grainy degraded copy of train_01690 with swapped label,drop
+train_00378,alien,alien face pasted on the image,drop
+train_00379,grainy,grainy degraded copy of train_03896 with swapped label,drop
+train_00380,grainy,grainy degraded copy of train_01014 with swapped label,drop
+train_00381,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00391,alien,alien face pasted on the image,drop
+train_00392,grainy,grainy degraded copy of train_02056 with swapped label,drop
+train_00393,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00394,grainy,grainy degraded copy of train_02635 with swapped label,drop
+train_00400,alien,alien face pasted on the image,drop
+train_00401,grainy,grainy degraded copy of train_03017 with swapped label,drop
+train_00402,grainy,grainy degraded copy of train_03444 with swapped label,drop
+train_00403,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00408,alien,alien face pasted on the image,drop
+train_00409,grainy,grainy degraded copy of train_01355 with swapped label,drop
+train_00410,grainy,grainy degraded copy of train_03955 with swapped label,drop
+train_00411,grainy,grainy degraded copy of train_00886 with swapped label,drop
+train_00415,alien,alien face pasted on the image,drop
+train_00416,grainy,grainy degraded copy of train_01908 with swapped label,drop
+train_00417,grainy,grainy degraded copy of train_03002 with swapped label,drop
+train_00418,grainy,grainy degraded copy of train_02028 with swapped label,drop
+train_00429,alien,alien face pasted on the image,drop
+train_00430,grainy,grainy degraded copy of train_03718 with swapped label,drop
+train_00431,grainy,grainy degraded copy of train_03414 with swapped label,drop
+train_00432,grainy,grainy degraded copy of train_01534 with swapped label,drop
+train_00436,alien,alien face pasted on the image,drop
+train_00437,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00438,grainy,grainy degraded copy of train_01644 with swapped label,drop
+train_00439,grainy,grainy degraded copy of train_00780 with swapped label,drop
+train_00442,alien,alien face pasted on the image,drop
+train_00443,grainy,grainy degraded copy of train_02395 with swapped label,drop
+train_00444,grainy,grainy degraded copy of train_01882 with swapped label,drop
+train_00445,grainy,grainy degraded copy of train_00312 with swapped label,drop
+train_00447,alien,alien face pasted on the image,drop
+train_00448,grainy,grainy degraded copy of train_03867 with swapped label,drop
+train_00449,grainy,grainy degraded copy of train_03374 with swapped label,drop
+train_00450,grainy,grainy degraded copy of train_03175 with swapped label,drop
+train_00456,alien,alien face pasted on the image,drop
+train_00457,grainy,grainy degraded copy of train_00001 with swapped label,drop
+train_00458,grainy,grainy degraded copy of train_04324 with swapped label,drop
+train_00459,grainy,grainy degraded copy of train_00152 with swapped label,drop
+train_00475,alien,alien face pasted on the image,drop
+train_00476,grainy,grainy degraded copy of train_03351 with swapped label,drop
+train_00477,grainy,grainy degraded copy of train_01008 with swapped label,drop
+train_00478,grainy,grainy degraded copy of train_00323 with swapped label,drop
+train_00483,alien,alien face pasted on the image,drop
+train_00484,grainy,grainy degraded copy of train_01766 with swapped label,drop
+train_00485,grainy,grainy degraded copy of train_01902 with swapped label,drop
+train_00486,grainy,grainy degraded copy of train_02462 with swapped label,drop
+train_00495,alien,alien face pasted on the image,drop
+train_00496,grainy,grainy degraded copy of train_02828 with swapped label,drop
+train_00497,grainy,grainy degraded copy of train_01697 with swapped label,drop
+train_00498,grainy,grainy degraded copy of train_03415 with swapped label,drop
+train_00521,alien,alien face pasted on the image,drop
+train_00522,grainy,grainy degraded copy of train_04283 with swapped label,drop
+train_00523,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00524,grainy,grainy degraded copy of train_01474 with swapped label,drop
+train_00526,alien,alien face pasted on the image,drop
+train_00527,grainy,grainy degraded copy of train_00089 with swapped label,drop
+train_00528,grainy,grainy degraded copy of train_03895 with swapped label,drop
+train_00529,grainy,grainy degraded copy of train_03012 with swapped label,drop
+train_00531,alien,alien face pasted on the image,drop
+train_00532,grainy,grainy degraded copy of train_01670 with swapped label,drop
+train_00533,grainy,grainy degraded copy of train_00898 with swapped label,drop
+train_00534,grainy,grainy degraded copy of train_02253 with swapped label,drop
+train_00536,alien,alien face pasted on the image,drop
+train_00537,grainy,grainy degraded copy of train_03518 with swapped label,drop
+train_00538,grainy,grainy degraded copy of train_01443 with swapped label,drop
+train_00539,grainy,grainy degraded copy of train_02364 with swapped label,drop
+train_00550,alien,alien face pasted on the image,drop
+train_00551,grainy,grainy degraded copy of train_03895 with swapped label,drop
+train_00552,grainy,grainy degraded copy of train_00044 with swapped label,drop
+train_00553,grainy,grainy degraded copy of train_01596 with swapped label,drop
+train_00559,alien,alien face pasted on the image,drop
+train_00560,grainy,grainy degraded copy of train_03380 with swapped label,drop
+train_00561,grainy,grainy degraded copy of train_02062 with swapped label,drop
+train_00562,grainy,grainy degraded copy of train_00512 with swapped label,drop
+train_00566,alien,alien face pasted on the image,drop
+train_00567,grainy,grainy degraded copy of train_02598 with swapped label,drop
+train_00568,grainy,grainy degraded copy of train_02716 with swapped label,drop
+train_00569,grainy,grainy degraded copy of train_00649 with swapped label,drop
+train_00572,alien,alien face pasted on the image,drop
+train_00573,grainy,grainy degraded copy of train_03391 with swapped label,drop
+train_00574,grainy,grainy degraded copy of train_03975 with swapped label,drop
+train_00575,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00579,alien,alien face pasted on the image,drop
+train_00580,grainy,grainy degraded copy of train_02648 with swapped label,drop
+train_00581,grainy,grainy degraded copy of train_03865 with swapped label,drop
+train_00582,grainy,grainy degraded copy of train_01253 with swapped label,drop
+train_00610,alien,alien face pasted on the image,drop
+train_00611,grainy,grainy degraded copy of train_03281 with swapped label,drop
+train_00612,grainy,grainy degraded copy of train_01845 with swapped label,drop
+train_00613,grainy,grainy degraded copy of train_01081 with swapped label,drop
+train_00615,alien,alien face pasted on the image,drop
+train_00616,grainy,grainy degraded copy of train_02441 with swapped label,drop
+train_00617,grainy,grainy degraded copy of train_02782 with swapped label,drop
+train_00618,grainy,grainy degraded copy of train_00232 with swapped label,drop
+train_00628,alien,alien face pasted on the image,drop
+train_00629,grainy,grainy degraded copy of train_02777 with swapped label,drop
+train_00630,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00631,grainy,grainy degraded copy of train_02178 with swapped label,drop
+train_00639,alien,alien face pasted on the image,drop
+train_00640,grainy,grainy degraded copy of train_01696 with swapped label,drop
+train_00641,grainy,grainy degraded copy of train_02321 with swapped label,drop
+train_00642,grainy,grainy degraded copy of train_03459 with swapped label,drop
+train_00650,alien,alien face pasted on the image,drop
+train_00651,grainy,grainy degraded copy of train_03010 with swapped label,drop
+train_00652,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00653,grainy,grainy degraded copy of train_03875 with swapped label,drop
+train_00657,alien,alien face pasted on the image,drop
+train_00658,grainy,grainy degraded copy of train_03777 with swapped label,drop
+train_00659,grainy,grainy degraded copy of train_02305 with swapped label,drop
+train_00660,grainy,grainy degraded copy of train_02056 with swapped label,drop
+train_00665,alien,alien face pasted on the image,drop
+train_00666,grainy,grainy degraded copy of train_02848 with swapped label,drop
+train_00667,grainy,grainy degraded copy of train_01697 with swapped label,drop
+train_00668,grainy,grainy degraded copy of train_02122 with swapped label,drop
+train_00676,alien,alien face pasted on the image,drop
+train_00677,grainy,grainy degraded copy of train_04139 with swapped label,drop
+train_00678,grainy,grainy degraded copy of train_00673 with swapped label,drop
+train_00679,grainy,grainy degraded copy of train_00997 with swapped label,drop
+train_00721,alien,alien face pasted on the image,drop
+train_00722,grainy,grainy degraded copy of train_00763 with swapped label,drop
+train_00723,grainy,grainy degraded copy of train_01598 with swapped label,drop
+train_00724,grainy,grainy degraded copy of train_02363 with swapped label,drop
+train_00730,alien,alien face pasted on the image,drop
+train_00731,grainy,grainy degraded copy of train_03029 with swapped label,drop
+train_00732,grainy,grainy degraded copy of train_01775 with swapped label,drop
+train_00733,grainy,grainy degraded copy of train_01084 with swapped label,drop
+train_00738,alien,alien face pasted on the image,drop
+train_00739,grainy,grainy degraded copy of train_01781 with swapped label,drop
+train_00740,grainy,grainy degraded copy of train_01286 with swapped label,drop
+train_00741,grainy,grainy degraded copy of train_02650 with swapped label,drop
+train_00745,alien,alien face pasted on the image,drop
+train_00746,grainy,grainy degraded copy of train_00583 with swapped label,drop
+train_00747,grainy,grainy degraded copy of train_03754 with swapped label,drop
+train_00748,grainy,grainy degraded copy of train_03750 with swapped label,drop
+train_00774,alien,alien face pasted on the image,drop
+train_00775,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00776,grainy,grainy degraded copy of train_02606 with swapped label,drop
+train_00777,grainy,grainy degraded copy of train_04286 with swapped label,drop
+train_00799,alien,alien face pasted on the image,drop
+train_00800,grainy,grainy degraded copy of train_03351 with swapped label,drop
+train_00801,grainy,grainy degraded copy of train_00005 with swapped label,drop
+train_00802,grainy,grainy degraded copy of train_01477 with swapped label,drop
+train_00809,alien,alien face pasted on the image,drop
+train_00810,grainy,grainy degraded copy of train_01652 with swapped label,drop
+train_00811,grainy,grainy degraded copy of train_01671 with swapped label,drop
+train_00812,grainy,grainy degraded copy of train_00654 with swapped label,drop
+train_00818,alien,alien face pasted on the image,drop
+train_00819,grainy,grainy degraded copy of train_02908 with swapped label,drop
+train_00820,grainy,grainy degraded copy of train_03764 with swapped label,drop
+train_00821,grainy,grainy degraded copy of train_02130 with swapped label,drop
+train_00826,alien,alien face pasted on the image,drop
+train_00827,grainy,grainy degraded copy of train_04275 with swapped label,drop
+train_00828,grainy,grainy degraded copy of train_00131 with swapped label,drop
+train_00829,grainy,grainy degraded copy of train_00005 with swapped label,drop
+train_00835,alien,alien face pasted on the image,drop
+train_00836,grainy,grainy degraded copy of train_00719 with swapped label,drop
+train_00837,grainy,grainy degraded copy of train_04226 with swapped label,drop
+train_00838,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00845,alien,alien face pasted on the image,drop
+train_00846,grainy,grainy degraded copy of train_01443 with swapped label,drop
+train_00847,grainy,grainy degraded copy of train_03233 with swapped label,drop
+train_00848,grainy,grainy degraded copy of train_03637 with swapped label,drop
+train_00850,alien,alien face pasted on the image,drop
+train_00851,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00852,grainy,grainy degraded copy of train_01061 with swapped label,drop
+train_00853,grainy,grainy degraded copy of train_00594 with swapped label,drop
+train_00854,wrong_label_dup,duplicate of train_00713 with a wrong label (checked by eye),drop
+train_00855,alien,alien face pasted on the image,drop
+train_00856,grainy,grainy degraded copy of train_03519 with swapped label,drop
+train_00857,grainy,grainy degraded copy of train_02717 with swapped label,drop
+train_00858,grainy,grainy degraded copy of train_04320 with swapped label,drop
+train_00867,alien,alien face pasted on the image,drop
+train_00868,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00869,grainy,grainy degraded copy of train_02095 with swapped label,drop
+train_00870,grainy,grainy degraded copy of train_01829 with swapped label,drop
+train_00876,alien,alien face pasted on the image,drop
+train_00877,grainy,grainy degraded copy of train_00863 with swapped label,drop
+train_00878,grainy,grainy degraded copy of train_01297 with swapped label,drop
+train_00879,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00888,alien,alien face pasted on the image,drop
+train_00889,grainy,grainy degraded copy of train_02591 with swapped label,drop
+train_00890,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00891,grainy,grainy degraded copy of train_01935 with swapped label,drop
+train_00900,alien,alien face pasted on the image,drop
+train_00901,grainy,grainy degraded copy of train_04197 with swapped label,drop
+train_00902,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00903,grainy,grainy degraded copy of train_02072 with swapped label,drop
+train_00906,alien,alien face pasted on the image,drop
+train_00907,grainy,grainy degraded copy of train_03330 with swapped label,drop
+train_00908,grainy,grainy degraded copy of train_01402 with swapped label,drop
+train_00909,grainy,grainy degraded copy of train_01609 with swapped label,drop
+train_00924,alien,alien face pasted on the image,drop
+train_00925,grainy,grainy degraded copy of train_01899 with swapped label,drop
+train_00926,grainy,grainy degraded copy of train_03638 with swapped label,drop
+train_00927,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_00944,wrong_label_dup,duplicate of train_02152 with a wrong label (checked by eye),drop
+train_00947,alien,alien face pasted on the image,drop
+train_00948,grainy,grainy degraded copy of train_01437 with swapped label,drop
+train_00949,grainy,grainy degraded copy of train_04298 with swapped label,drop
+train_00950,grainy,grainy degraded copy of train_02802 with swapped label,drop
+train_00968,alien,alien face pasted on the image,drop
+train_00969,grainy,grainy degraded copy of train_03859 with swapped label,drop
+train_00970,grainy,grainy degraded copy of train_01749 with swapped label,drop
+train_00971,grainy,grainy degraded copy of train_00311 with swapped label,drop
+train_00985,alien,alien face pasted on the image,drop
+train_00986,grainy,grainy degraded copy of train_02828 with swapped label,drop
+train_00987,grainy,grainy degraded copy of train_01741 with swapped label,drop
+train_00988,grainy,grainy degraded copy of train_02341 with swapped label,drop
+train_00991,alien,alien face pasted on the image,drop
+train_00992,grainy,grainy degraded copy of train_03840 with swapped label,drop
+train_00993,grainy,grainy degraded copy of train_01546 with swapped label,drop
+train_00994,grainy,grainy degraded copy of train_03853 with swapped label,drop
+train_00998,alien,alien face pasted on the image,drop
+train_00999,grainy,grainy degraded copy of train_00515 with swapped label,drop
+train_01000,grainy,grainy degraded copy of train_02570 with swapped label,drop
+train_01001,grainy,grainy degraded copy of train_00558 with swapped label,drop
+train_01035,alien,alien face pasted on the image,drop
+train_01036,grainy,grainy degraded copy of train_04184 with swapped label,drop
+train_01037,grainy,grainy degraded copy of train_04198 with swapped label,drop
+train_01038,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01040,alien,alien face pasted on the image,drop
+train_01041,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01042,grainy,grainy degraded copy of train_03191 with swapped label,drop
+train_01043,grainy,grainy degraded copy of train_01254 with swapped label,drop
+train_01047,alien,alien face pasted on the image,drop
+train_01048,grainy,grainy degraded copy of train_01006 with swapped label,drop
+train_01049,grainy,grainy degraded copy of train_03780 with swapped label,drop
+train_01050,grainy,grainy degraded copy of train_01554 with swapped label,drop
+train_01066,alien,alien face pasted on the image,drop
+train_01067,grainy,grainy degraded copy of train_01757 with swapped label,drop
+train_01068,grainy,grainy degraded copy of train_00191 with swapped label,drop
+train_01069,grainy,grainy degraded copy of train_01014 with swapped label,drop
+train_01076,alien,alien face pasted on the image,drop
+train_01077,grainy,grainy degraded copy of train_00011 with swapped label,drop
+train_01078,grainy,grainy degraded copy of train_00388 with swapped label,drop
+train_01079,grainy,grainy degraded copy of train_03992 with swapped label,drop
+train_01096,alien,alien face pasted on the image,drop
+train_01097,grainy,grainy degraded copy of train_01968 with swapped label,drop
+train_01098,grainy,grainy degraded copy of train_01997 with swapped label,drop
+train_01099,grainy,grainy degraded copy of train_01371 with swapped label,drop
+train_01102,alien,alien face pasted on the image,drop
+train_01103,grainy,grainy degraded copy of train_02422 with swapped label,drop
+train_01104,grainy,grainy degraded copy of train_02480 with swapped label,drop
+train_01105,grainy,grainy degraded copy of train_02037 with swapped label,drop
+train_01107,alien,alien face pasted on the image,drop
+train_01108,grainy,grainy degraded copy of train_03534 with swapped label,drop
+train_01109,grainy,grainy degraded copy of train_00608 with swapped label,drop
+train_01110,grainy,grainy degraded copy of train_03957 with swapped label,drop
+train_01116,alien,alien face pasted on the image,drop
+train_01117,grainy,grainy degraded copy of train_00351 with swapped label,drop
+train_01118,grainy,grainy degraded copy of train_01191 with swapped label,drop
+train_01119,grainy,grainy degraded copy of train_04061 with swapped label,drop
+train_01131,alien,alien face pasted on the image,drop
+train_01132,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01133,grainy,grainy degraded copy of train_03234 with swapped label,drop
+train_01134,grainy,grainy degraded copy of train_00116 with swapped label,drop
+train_01165,alien,alien face pasted on the image,drop
+train_01166,grainy,grainy degraded copy of train_03903 with swapped label,drop
+train_01167,grainy,grainy degraded copy of train_03164 with swapped label,drop
+train_01168,grainy,grainy degraded copy of train_01235 with swapped label,drop
+train_01178,alien,alien face pasted on the image,drop
+train_01179,grainy,grainy degraded copy of train_03723 with swapped label,drop
+train_01180,grainy,grainy degraded copy of train_03475 with swapped label,drop
+train_01181,grainy,grainy degraded copy of train_00025 with swapped label,drop
+train_01194,alien,alien face pasted on the image,drop
+train_01195,grainy,grainy degraded copy of train_04320 with swapped label,drop
+train_01196,grainy,grainy degraded copy of train_00783 with swapped label,drop
+train_01197,grainy,grainy degraded copy of train_02908 with swapped label,drop
+train_01220,alien,alien face pasted on the image,drop
+train_01221,grainy,grainy degraded copy of train_00145 with swapped label,drop
+train_01222,grainy,grainy degraded copy of train_02343 with swapped label,drop
+train_01223,grainy,grainy degraded copy of train_00898 with swapped label,drop
+train_01230,alien,alien face pasted on the image,drop
+train_01231,grainy,grainy degraded copy of train_04039 with swapped label,drop
+train_01232,grainy,grainy degraded copy of train_04200 with swapped label,drop
+train_01233,grainy,grainy degraded copy of train_00886 with swapped label,drop
+train_01237,alien,alien face pasted on the image,drop
+train_01238,grainy,grainy degraded copy of train_01572 with swapped label,drop
+train_01239,grainy,grainy degraded copy of train_01249 with swapped label,drop
+train_01240,grainy,grainy degraded copy of train_04160 with swapped label,drop
+train_01242,alien,alien face pasted on the image,drop
+train_01243,grainy,grainy degraded copy of train_03426 with swapped label,drop
+train_01244,grainy,grainy degraded copy of train_02883 with swapped label,drop
+train_01245,grainy,grainy degraded copy of train_02395 with swapped label,drop
+train_01265,alien,alien face pasted on the image,drop
+train_01266,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01267,grainy,grainy degraded copy of train_02598 with swapped label,drop
+train_01268,grainy,grainy degraded copy of train_03122 with swapped label,drop
+train_01278,alien,alien face pasted on the image,drop
+train_01279,grainy,grainy degraded copy of train_03448 with swapped label,drop
+train_01280,grainy,grainy degraded copy of train_03482 with swapped label,drop
+train_01281,grainy,grainy degraded copy of train_00352 with swapped label,drop
+train_01292,alien,alien face pasted on the image,drop
+train_01293,grainy,grainy degraded copy of train_01952 with swapped label,drop
+train_01294,grainy,grainy degraded copy of train_03657 with swapped label,drop
+train_01295,grainy,grainy degraded copy of train_03014 with swapped label,drop
+train_01307,alien,alien face pasted on the image,drop
+train_01308,grainy,grainy degraded copy of train_00923 with swapped label,drop
+train_01309,grainy,grainy degraded copy of train_04214 with swapped label,drop
+train_01310,grainy,grainy degraded copy of train_03427 with swapped label,drop
+train_01314,alien,alien face pasted on the image,drop
+train_01315,grainy,grainy degraded copy of train_01358 with swapped label,drop
+train_01316,grainy,grainy degraded copy of train_03941 with swapped label,drop
+train_01317,grainy,grainy degraded copy of train_00470 with swapped label,drop
+train_01320,alien,alien face pasted on the image,drop
+train_01321,grainy,grainy degraded copy of train_00520 with swapped label,drop
+train_01322,grainy,grainy degraded copy of train_02084 with swapped label,drop
+train_01323,grainy,grainy degraded copy of train_01941 with swapped label,drop
+train_01325,alien,alien face pasted on the image,drop
+train_01326,grainy,grainy degraded copy of train_01850 with swapped label,drop
+train_01327,grainy,grainy degraded copy of train_03935 with swapped label,drop
+train_01328,grainy,grainy degraded copy of train_04213 with swapped label,drop
+train_01335,alien,alien face pasted on the image,drop
+train_01336,grainy,grainy degraded copy of train_00655 with swapped label,drop
+train_01337,grainy,grainy degraded copy of train_00189 with swapped label,drop
+train_01338,grainy,grainy degraded copy of train_02621 with swapped label,drop
+train_01366,alien,alien face pasted on the image,drop
+train_01367,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01368,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01369,grainy,grainy degraded copy of train_02555 with swapped label,drop
+train_01386,alien,alien face pasted on the image,drop
+train_01387,grainy,grainy degraded copy of train_00158 with swapped label,drop
+train_01388,grainy,grainy degraded copy of train_04160 with swapped label,drop
+train_01389,grainy,grainy degraded copy of train_00117 with swapped label,drop
+train_01409,alien,alien face pasted on the image,drop
+train_01410,grainy,grainy degraded copy of train_00673 with swapped label,drop
+train_01411,grainy,grainy degraded copy of train_01130 with swapped label,drop
+train_01412,grainy,grainy degraded copy of train_03896 with swapped label,drop
+train_01414,alien,alien face pasted on the image,drop
+train_01415,grainy,grainy degraded copy of train_04217 with swapped label,drop
+train_01416,grainy,grainy degraded copy of train_02584 with swapped label,drop
+train_01417,grainy,grainy degraded copy of train_01871 with swapped label,drop
+train_01423,alien,alien face pasted on the image,drop
+train_01424,grainy,grainy degraded copy of train_02802 with swapped label,drop
+train_01425,grainy,grainy degraded copy of train_03122 with swapped label,drop
+train_01426,grainy,grainy degraded copy of train_00541 with swapped label,drop
+train_01430,alien,alien face pasted on the image,drop
+train_01431,grainy,grainy degraded copy of train_00512 with swapped label,drop
+train_01432,grainy,grainy degraded copy of train_01454 with swapped label,drop
+train_01433,grainy,grainy degraded copy of train_00155 with swapped label,drop
+train_01438,alien,alien face pasted on the image,drop
+train_01439,grainy,grainy degraded copy of train_02176 with swapped label,drop
+train_01440,grainy,grainy degraded copy of train_01152 with swapped label,drop
+train_01441,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01448,alien,alien face pasted on the image,drop
+train_01449,grainy,grainy degraded copy of train_02513 with swapped label,drop
+train_01450,grainy,grainy degraded copy of train_03593 with swapped label,drop
+train_01451,grainy,grainy degraded copy of train_03060 with swapped label,drop
+train_01455,alien,alien face pasted on the image,drop
+train_01456,grainy,grainy degraded copy of train_01135 with swapped label,drop
+train_01457,grainy,grainy degraded copy of train_00383 with swapped label,drop
+train_01458,grainy,grainy degraded copy of train_00690 with swapped label,drop
+train_01488,alien,alien face pasted on the image,drop
+train_01489,grainy,grainy degraded copy of train_02441 with swapped label,drop
+train_01490,grainy,grainy degraded copy of train_02834 with swapped label,drop
+train_01491,grainy,grainy degraded copy of train_03330 with swapped label,drop
+train_01496,alien,alien face pasted on the image,drop
+train_01497,grainy,grainy degraded copy of train_00862 with swapped label,drop
+train_01498,grainy,grainy degraded copy of train_03947 with swapped label,drop
+train_01499,grainy,grainy degraded copy of train_01941 with swapped label,drop
+train_01504,alien,alien face pasted on the image,drop
+train_01505,grainy,grainy degraded copy of train_00548 with swapped label,drop
+train_01506,grainy,grainy degraded copy of train_03828 with swapped label,drop
+train_01507,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01513,alien,alien face pasted on the image,drop
+train_01514,grainy,grainy degraded copy of train_02649 with swapped label,drop
+train_01515,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01516,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01556,alien,alien face pasted on the image,drop
+train_01557,grainy,grainy degraded copy of train_02883 with swapped label,drop
+train_01558,grainy,grainy degraded copy of train_00749 with swapped label,drop
+train_01559,grainy,grainy degraded copy of train_01805 with swapped label,drop
+train_01565,alien,alien face pasted on the image,drop
+train_01566,grainy,grainy degraded copy of train_02095 with swapped label,drop
+train_01567,grainy,grainy degraded copy of train_03244 with swapped label,drop
+train_01568,grainy,grainy degraded copy of train_00546 with swapped label,drop
+train_01578,alien,alien face pasted on the image,drop
+train_01579,grainy,grainy degraded copy of train_00465 with swapped label,drop
+train_01580,grainy,grainy degraded copy of train_02424 with swapped label,drop
+train_01581,grainy,grainy degraded copy of train_02744 with swapped label,drop
+train_01591,alien,alien face pasted on the image,drop
+train_01592,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01593,grainy,grainy degraded copy of train_02717 with swapped label,drop
+train_01594,grainy,grainy degraded copy of train_04096 with swapped label,drop
+train_01615,alien,alien face pasted on the image,drop
+train_01616,grainy,grainy degraded copy of train_02424 with swapped label,drop
+train_01617,grainy,grainy degraded copy of train_01289 with swapped label,drop
+train_01618,grainy,grainy degraded copy of train_03441 with swapped label,drop
+train_01623,alien,alien face pasted on the image,drop
+train_01624,grainy,grainy degraded copy of train_01838 with swapped label,drop
+train_01625,grainy,grainy degraded copy of train_03959 with swapped label,drop
+train_01626,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01634,alien,alien face pasted on the image,drop
+train_01635,grainy,grainy degraded copy of train_00603 with swapped label,drop
+train_01636,grainy,grainy degraded copy of train_02402 with swapped label,drop
+train_01637,grainy,grainy degraded copy of train_01225 with swapped label,drop
+train_01640,alien,alien face pasted on the image,drop
+train_01641,grainy,grainy degraded copy of train_03427 with swapped label,drop
+train_01642,grainy,grainy degraded copy of train_03777 with swapped label,drop
+train_01643,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01664,alien,alien face pasted on the image,drop
+train_01665,grainy,grainy degraded copy of train_02762 with swapped label,drop
+train_01666,grainy,grainy degraded copy of train_00102 with swapped label,drop
+train_01667,grainy,grainy degraded copy of train_00025 with swapped label,drop
+train_01677,alien,alien face pasted on the image,drop
+train_01678,grainy,grainy degraded copy of train_04060 with swapped label,drop
+train_01679,grainy,grainy degraded copy of train_03896 with swapped label,drop
+train_01680,grainy,grainy degraded copy of train_01845 with swapped label,drop
+train_01685,alien,alien face pasted on the image,drop
+train_01686,grainy,grainy degraded copy of train_01219 with swapped label,drop
+train_01687,grainy,grainy degraded copy of train_03784 with swapped label,drop
+train_01688,grainy,grainy degraded copy of train_02927 with swapped label,drop
+train_01701,alien,alien face pasted on the image,drop
+train_01702,grainy,grainy degraded copy of train_02343 with swapped label,drop
+train_01703,grainy,grainy degraded copy of train_03671 with swapped label,drop
+train_01704,grainy,grainy degraded copy of train_01707 with swapped label,drop
+train_01725,alien,alien face pasted on the image,drop
+train_01726,grainy,grainy degraded copy of train_01795 with swapped label,drop
+train_01727,grainy,grainy degraded copy of train_02716 with swapped label,drop
+train_01728,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01730,alien,alien face pasted on the image,drop
+train_01731,grainy,grainy degraded copy of train_03469 with swapped label,drop
+train_01732,grainy,grainy degraded copy of train_00339 with swapped label,drop
+train_01733,grainy,grainy degraded copy of train_03783 with swapped label,drop
+train_01768,alien,alien face pasted on the image,drop
+train_01769,grainy,grainy degraded copy of train_03989 with swapped label,drop
+train_01770,grainy,grainy degraded copy of train_03559 with swapped label,drop
+train_01771,grainy,grainy degraded copy of train_03535 with swapped label,drop
+train_01783,alien,alien face pasted on the image,drop
+train_01784,grainy,grainy degraded copy of train_02826 with swapped label,drop
+train_01785,grainy,grainy degraded copy of train_00342 with swapped label,drop
+train_01786,grainy,grainy degraded copy of train_02413 with swapped label,drop
+train_01799,alien,alien face pasted on the image,drop
+train_01800,grainy,grainy degraded copy of train_03060 with swapped label,drop
+train_01801,grainy,grainy degraded copy of train_00491 with swapped label,drop
+train_01802,grainy,grainy degraded copy of train_00682 with swapped label,drop
+train_01833,alien,alien face pasted on the image,drop
+train_01834,grainy,grainy degraded copy of train_01324 with swapped label,drop
+train_01835,grainy,grainy degraded copy of train_02893 with swapped label,drop
+train_01836,grainy,grainy degraded copy of train_00603 with swapped label,drop
+train_01840,alien,alien face pasted on the image,drop
+train_01841,grainy,grainy degraded copy of train_01528 with swapped label,drop
+train_01842,grainy,grainy degraded copy of train_02111 with swapped label,drop
+train_01843,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01853,alien,alien face pasted on the image,drop
+train_01854,grainy,grainy degraded copy of train_04193 with swapped label,drop
+train_01855,grainy,grainy degraded copy of train_03976 with swapped label,drop
+train_01856,grainy,grainy degraded copy of train_01072 with swapped label,drop
+train_01859,alien,alien face pasted on the image,drop
+train_01860,grainy,grainy degraded copy of train_02943 with swapped label,drop
+train_01861,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01862,grainy,grainy degraded copy of train_03125 with swapped label,drop
+train_01872,alien,alien face pasted on the image,drop
+train_01873,grainy,grainy degraded copy of train_01696 with swapped label,drop
+train_01874,grainy,grainy degraded copy of train_03867 with swapped label,drop
+train_01875,grainy,grainy degraded copy of train_03664 with swapped label,drop
+train_01877,alien,alien face pasted on the image,drop
+train_01878,grainy,grainy degraded copy of train_00863 with swapped label,drop
+train_01879,grainy,grainy degraded copy of train_01218 with swapped label,drop
+train_01880,grainy,grainy degraded copy of train_03479 with swapped label,drop
+train_01891,alien,alien face pasted on the image,drop
+train_01892,grainy,grainy degraded copy of train_01917 with swapped label,drop
+train_01893,grainy,grainy degraded copy of train_03497 with swapped label,drop
+train_01894,grainy,grainy degraded copy of train_02166 with swapped label,drop
+train_01910,alien,alien face pasted on the image,drop
+train_01911,grainy,grainy degraded copy of train_00790 with swapped label,drop
+train_01912,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01913,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01922,alien,alien face pasted on the image,drop
+train_01923,grainy,grainy degraded copy of train_01286 with swapped label,drop
+train_01924,grainy,grainy degraded copy of train_04163 with swapped label,drop
+train_01925,grainy,grainy degraded copy of train_02298 with swapped label,drop
+train_01929,alien,alien face pasted on the image,drop
+train_01930,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_01931,grainy,grainy degraded copy of train_01531 with swapped label,drop
+train_01932,grainy,grainy degraded copy of train_01342 with swapped label,drop
+train_01937,alien,alien face pasted on the image,drop
+train_01938,grainy,grainy degraded copy of train_00590 with swapped label,drop
+train_01939,grainy,grainy degraded copy of train_03353 with swapped label,drop
+train_01940,grainy,grainy degraded copy of train_00844 with swapped label,drop
+train_01943,alien,alien face pasted on the image,drop
+train_01944,grainy,grainy degraded copy of train_01396 with swapped label,drop
+train_01945,grainy,grainy degraded copy of train_02326 with swapped label,drop
+train_01946,grainy,grainy degraded copy of train_00329 with swapped label,drop
+train_01953,alien,alien face pasted on the image,drop
+train_01954,grainy,grainy degraded copy of train_00649 with swapped label,drop
+train_01955,grainy,grainy degraded copy of train_02691 with swapped label,drop
+train_01956,grainy,grainy degraded copy of train_02638 with swapped label,drop
+train_01978,alien,alien face pasted on the image,drop
+train_01979,grainy,grainy degraded copy of train_00693 with swapped label,drop
+train_01980,grainy,grainy degraded copy of train_01596 with swapped label,drop
+train_01981,grainy,grainy degraded copy of train_01631 with swapped label,drop
+train_01990,alien,alien face pasted on the image,drop
+train_01991,grainy,grainy degraded copy of train_02111 with swapped label,drop
+train_01992,grainy,grainy degraded copy of train_00683 with swapped label,drop
+train_01993,grainy,grainy degraded copy of train_00155 with swapped label,drop
+train_02013,alien,alien face pasted on the image,drop
+train_02014,grainy,grainy degraded copy of train_00923 with swapped label,drop
+train_02015,grainy,grainy degraded copy of train_00540 with swapped label,drop
+train_02016,grainy,grainy degraded copy of train_02826 with swapped label,drop
+train_02033,alien,alien face pasted on the image,drop
+train_02034,grainy,grainy degraded copy of train_02303 with swapped label,drop
+train_02035,grainy,grainy degraded copy of train_01597 with swapped label,drop
+train_02036,grainy,grainy degraded copy of train_03475 with swapped label,drop
+train_02039,alien,alien face pasted on the image,drop
+train_02040,grainy,grainy degraded copy of train_03445 with swapped label,drop
+train_02041,grainy,grainy degraded copy of train_04051 with swapped label,drop
+train_02042,grainy,grainy degraded copy of train_04216 with swapped label,drop
+train_02047,alien,alien face pasted on the image,drop
+train_02048,grainy,grainy degraded copy of train_01818 with swapped label,drop
+train_02049,grainy,grainy degraded copy of train_03941 with swapped label,drop
+train_02050,grainy,grainy degraded copy of train_02224 with swapped label,drop
+train_02073,alien,alien face pasted on the image,drop
+train_02074,grainy,grainy degraded copy of train_03896 with swapped label,drop
+train_02075,grainy,grainy degraded copy of train_00312 with swapped label,drop
+train_02076,grainy,grainy degraded copy of train_02319 with swapped label,drop
+train_02080,alien,alien face pasted on the image,drop
+train_02081,grainy,grainy degraded copy of train_01395 with swapped label,drop
+train_02082,grainy,grainy degraded copy of train_00001 with swapped label,drop
+train_02083,grainy,grainy degraded copy of train_02176 with swapped label,drop
+train_02088,alien,alien face pasted on the image,drop
+train_02089,grainy,grainy degraded copy of train_00048 with swapped label,drop
+train_02090,grainy,grainy degraded copy of train_02810 with swapped label,drop
+train_02091,grainy,grainy degraded copy of train_03830 with swapped label,drop
+train_02098,alien,alien face pasted on the image,drop
+train_02099,grainy,grainy degraded copy of train_01772 with swapped label,drop
+train_02100,grainy,grainy degraded copy of train_01303 with swapped label,drop
+train_02101,grainy,grainy degraded copy of train_03201 with swapped label,drop
+train_02103,alien,alien face pasted on the image,drop
+train_02104,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02105,grainy,grainy degraded copy of train_02985 with swapped label,drop
+train_02106,grainy,grainy degraded copy of train_01690 with swapped label,drop
+train_02112,alien,alien face pasted on the image,drop
+train_02113,grainy,grainy degraded copy of train_02619 with swapped label,drop
+train_02114,grainy,grainy degraded copy of train_04250 with swapped label,drop
+train_02115,grainy,grainy degraded copy of train_04200 with swapped label,drop
+train_02118,alien,alien face pasted on the image,drop
+train_02119,grainy,grainy degraded copy of train_01968 with swapped label,drop
+train_02120,grainy,grainy degraded copy of train_01202 with swapped label,drop
+train_02121,grainy,grainy degraded copy of train_01582 with swapped label,drop
+train_02142,alien,alien face pasted on the image,drop
+train_02143,grainy,grainy degraded copy of train_02053 with swapped label,drop
+train_02144,grainy,grainy degraded copy of train_03438 with swapped label,drop
+train_02145,grainy,grainy degraded copy of train_01952 with swapped label,drop
+train_02153,alien,alien face pasted on the image,drop
+train_02154,grainy,grainy degraded copy of train_01006 with swapped label,drop
+train_02155,grainy,grainy degraded copy of train_02037 with swapped label,drop
+train_02156,grainy,grainy degraded copy of train_00261 with swapped label,drop
+train_02168,alien,alien face pasted on the image,drop
+train_02169,grainy,grainy degraded copy of train_00899 with swapped label,drop
+train_02170,grainy,grainy degraded copy of train_03896 with swapped label,drop
+train_02171,grainy,grainy degraded copy of train_01303 with swapped label,drop
+train_02179,broken,broken image (missing-data block + artifact),drop
+train_02187,alien,alien face pasted on the image,drop
+train_02188,grainy,grainy degraded copy of train_02818 with swapped label,drop
+train_02189,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02190,grainy,grainy degraded copy of train_01631 with swapped label,drop
+train_02193,alien,alien face pasted on the image,drop
+train_02194,grainy,grainy degraded copy of train_01351 with swapped label,drop
+train_02195,grainy,grainy degraded copy of train_00222 with swapped label,drop
+train_02196,grainy,grainy degraded copy of train_00885 with swapped label,drop
+train_02208,alien,alien face pasted on the image,drop
+train_02209,grainy,grainy degraded copy of train_01644 with swapped label,drop
+train_02210,grainy,grainy degraded copy of train_00221 with swapped label,drop
+train_02211,grainy,grainy degraded copy of train_03895 with swapped label,drop
+train_02216,alien,alien face pasted on the image,drop
+train_02217,grainy,grainy degraded copy of train_02744 with swapped label,drop
+train_02218,grainy,grainy degraded copy of train_01377 with swapped label,drop
+train_02219,grainy,grainy degraded copy of train_00244 with swapped label,drop
+train_02226,alien,alien face pasted on the image,drop
+train_02227,grainy,grainy degraded copy of train_04217 with swapped label,drop
+train_02228,grainy,grainy degraded copy of train_04139 with swapped label,drop
+train_02229,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02247,alien,alien face pasted on the image,drop
+train_02248,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02249,grainy,grainy degraded copy of train_03987 with swapped label,drop
+train_02250,grainy,grainy degraded copy of train_02522 with swapped label,drop
+train_02266,alien,alien face pasted on the image,drop
+train_02267,grainy,grainy degraded copy of train_00516 with swapped label,drop
+train_02268,grainy,grainy degraded copy of train_03302 with swapped label,drop
+train_02269,grainy,grainy degraded copy of train_00517 with swapped label,drop
+train_02271,alien,alien face pasted on the image,drop
+train_02272,grainy,grainy degraded copy of train_01781 with swapped label,drop
+train_02273,grainy,grainy degraded copy of train_01533 with swapped label,drop
+train_02274,grainy,grainy degraded copy of train_03714 with swapped label,drop
+train_02281,alien,alien face pasted on the image,drop
+train_02282,grainy,grainy degraded copy of train_00257 with swapped label,drop
+train_02283,grainy,grainy degraded copy of train_03929 with swapped label,drop
+train_02284,grainy,grainy degraded copy of train_01690 with swapped label,drop
+train_02314,alien,alien face pasted on the image,drop
+train_02315,grainy,grainy degraded copy of train_02883 with swapped label,drop
+train_02316,grainy,grainy degraded copy of train_03260 with swapped label,drop
+train_02317,grainy,grainy degraded copy of train_02359 with swapped label,drop
+train_02345,alien,alien face pasted on the image,drop
+train_02346,grainy,grainy degraded copy of train_03381 with swapped label,drop
+train_02347,grainy,grainy degraded copy of train_00491 with swapped label,drop
+train_02348,grainy,grainy degraded copy of train_01755 with swapped label,drop
+train_02354,alien,alien face pasted on the image,drop
+train_02355,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02356,grainy,grainy degraded copy of train_02238 with swapped label,drop
+train_02357,grainy,grainy degraded copy of train_01149 with swapped label,drop
+train_02372,alien,alien face pasted on the image,drop
+train_02373,grainy,grainy degraded copy of train_03330 with swapped label,drop
+train_02374,grainy,grainy degraded copy of train_03453 with swapped label,drop
+train_02375,grainy,grainy degraded copy of train_03888 with swapped label,drop
+train_02377,alien,alien face pasted on the image,drop
+train_02378,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02379,grainy,grainy degraded copy of train_03482 with swapped label,drop
+train_02380,grainy,grainy degraded copy of train_02123 with swapped label,drop
+train_02389,alien,alien face pasted on the image,drop
+train_02390,grainy,grainy degraded copy of train_02201 with swapped label,drop
+train_02391,grainy,grainy degraded copy of train_03169 with swapped label,drop
+train_02392,grainy,grainy degraded copy of train_01734 with swapped label,drop
+train_02396,alien,alien face pasted on the image,drop
+train_02397,grainy,grainy degraded copy of train_03002 with swapped label,drop
+train_02398,grainy,grainy degraded copy of train_00863 with swapped label,drop
+train_02399,grainy,grainy degraded copy of train_04016 with swapped label,drop
+train_02404,alien,alien face pasted on the image,drop
+train_02405,grainy,grainy degraded copy of train_01057 with swapped label,drop
+train_02406,grainy,grainy degraded copy of train_01402 with swapped label,drop
+train_02407,grainy,grainy degraded copy of train_00757 with swapped label,drop
+train_02429,alien,alien face pasted on the image,drop
+train_02430,grainy,grainy degraded copy of train_00895 with swapped label,drop
+train_02431,grainy,grainy degraded copy of train_02727 with swapped label,drop
+train_02432,grainy,grainy degraded copy of train_03813 with swapped label,drop
+train_02437,alien,alien face pasted on the image,drop
+train_02438,grainy,grainy degraded copy of train_00898 with swapped label,drop
+train_02439,grainy,grainy degraded copy of train_00302 with swapped label,drop
+train_02440,grainy,grainy degraded copy of train_01070 with swapped label,drop
+train_02453,alien,alien face pasted on the image,drop
+train_02454,grainy,grainy degraded copy of train_00388 with swapped label,drop
+train_02455,grainy,grainy degraded copy of train_02141 with swapped label,drop
+train_02456,grainy,grainy degraded copy of train_00191 with swapped label,drop
+train_02469,alien,alien face pasted on the image,drop
+train_02470,grainy,grainy degraded copy of train_00312 with swapped label,drop
+train_02471,grainy,grainy degraded copy of train_00032 with swapped label,drop
+train_02472,grainy,grainy degraded copy of train_02869 with swapped label,drop
+train_02487,alien,alien face pasted on the image,drop
+train_02488,grainy,grainy degraded copy of train_00945 with swapped label,drop
+train_02489,grainy,grainy degraded copy of train_01968 with swapped label,drop
+train_02490,grainy,grainy degraded copy of train_02838 with swapped label,drop
+train_02493,alien,alien face pasted on the image,drop
+train_02494,grainy,grainy degraded copy of train_03766 with swapped label,drop
+train_02495,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02496,grainy,grainy degraded copy of train_01562 with swapped label,drop
+train_02500,alien,alien face pasted on the image,drop
+train_02501,grainy,grainy degraded copy of train_02597 with swapped label,drop
+train_02502,grainy,grainy degraded copy of train_00145 with swapped label,drop
+train_02503,grainy,grainy degraded copy of train_01487 with swapped label,drop
+train_02508,alien,alien face pasted on the image,drop
+train_02509,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02510,grainy,grainy degraded copy of train_00945 with swapped label,drop
+train_02511,grainy,grainy degraded copy of train_02837 with swapped label,drop
+train_02518,alien,alien face pasted on the image,drop
+train_02519,grainy,grainy degraded copy of train_00920 with swapped label,drop
+train_02520,grainy,grainy degraded copy of train_03181 with swapped label,drop
+train_02521,grainy,grainy degraded copy of train_03181 with swapped label,drop
+train_02526,alien,alien face pasted on the image,drop
+train_02527,grainy,grainy degraded copy of train_02353 with swapped label,drop
+train_02528,grainy,grainy degraded copy of train_02141 with swapped label,drop
+train_02529,grainy,grainy degraded copy of train_03865 with swapped label,drop
+train_02535,alien,alien face pasted on the image,drop
+train_02536,grainy,grainy degraded copy of train_00259 with swapped label,drop
+train_02537,grainy,grainy degraded copy of train_00911 with swapped label,drop
+train_02538,grainy,grainy degraded copy of train_03763 with swapped label,drop
+train_02557,alien,alien face pasted on the image,drop
+train_02558,grainy,grainy degraded copy of train_00966 with swapped label,drop
+train_02559,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02560,grainy,grainy degraded copy of train_04279 with swapped label,drop
+train_02576,alien,alien face pasted on the image,drop
+train_02577,grainy,grainy degraded copy of train_04093 with swapped label,drop
+train_02578,grainy,grainy degraded copy of train_00695 with swapped label,drop
+train_02579,grainy,grainy degraded copy of train_02186 with swapped label,drop
+train_02592,alien,alien face pasted on the image,drop
+train_02593,grainy,grainy degraded copy of train_02408 with swapped label,drop
+train_02594,grainy,grainy degraded copy of train_01395 with swapped label,drop
+train_02595,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02600,alien,alien face pasted on the image,drop
+train_02601,grainy,grainy degraded copy of train_03653 with swapped label,drop
+train_02602,grainy,grainy degraded copy of train_01881 with swapped label,drop
+train_02603,grainy,grainy degraded copy of train_03755 with swapped label,drop
+train_02614,alien,alien face pasted on the image,drop
+train_02615,grainy,grainy degraded copy of train_02548 with swapped label,drop
+train_02616,grainy,grainy degraded copy of train_00638 with swapped label,drop
+train_02617,grainy,grainy degraded copy of train_01354 with swapped label,drop
+train_02627,alien,alien face pasted on the image,drop
+train_02628,grainy,grainy degraded copy of train_04307 with swapped label,drop
+train_02629,grainy,grainy degraded copy of train_01046 with swapped label,drop
+train_02630,grainy,grainy degraded copy of train_03591 with swapped label,drop
+train_02639,alien,alien face pasted on the image,drop
+train_02640,grainy,grainy degraded copy of train_01014 with swapped label,drop
+train_02641,grainy,grainy degraded copy of train_01562 with swapped label,drop
+train_02642,grainy,grainy degraded copy of train_00222 with swapped label,drop
+train_02660,alien,alien face pasted on the image,drop
+train_02661,grainy,grainy degraded copy of train_01815 with swapped label,drop
+train_02662,grainy,grainy degraded copy of train_01200 with swapped label,drop
+train_02663,grainy,grainy degraded copy of train_03374 with swapped label,drop
+train_02666,alien,alien face pasted on the image,drop
+train_02667,grainy,grainy degraded copy of train_02914 with swapped label,drop
+train_02668,grainy,grainy degraded copy of train_01462 with swapped label,drop
+train_02669,grainy,grainy degraded copy of train_02395 with swapped label,drop
+train_02671,alien,alien face pasted on the image,drop
+train_02672,grainy,grainy degraded copy of train_02102 with swapped label,drop
+train_02673,grainy,grainy degraded copy of train_01554 with swapped label,drop
+train_02674,grainy,grainy degraded copy of train_00606 with swapped label,drop
+train_02676,alien,alien face pasted on the image,drop
+train_02677,grainy,grainy degraded copy of train_00118 with swapped label,drop
+train_02678,grainy,grainy degraded copy of train_01739 with swapped label,drop
+train_02679,grainy,grainy degraded copy of train_00323 with swapped label,drop
+train_02684,alien,alien face pasted on the image,drop
+train_02685,grainy,grainy degraded copy of train_01365 with swapped label,drop
+train_02686,grainy,grainy degraded copy of train_04160 with swapped label,drop
+train_02687,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02695,alien,alien face pasted on the image,drop
+train_02696,grainy,grainy degraded copy of train_02638 with swapped label,drop
+train_02697,grainy,grainy degraded copy of train_00577 with swapped label,drop
+train_02698,grainy,grainy degraded copy of train_02151 with swapped label,drop
+train_02709,alien,alien face pasted on the image,drop
+train_02710,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02711,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02712,grainy,grainy degraded copy of train_03017 with swapped label,drop
+train_02730,alien,alien face pasted on the image,drop
+train_02731,grainy,grainy degraded copy of train_03755 with swapped label,drop
+train_02732,grainy,grainy degraded copy of train_03186 with swapped label,drop
+train_02733,grainy,grainy degraded copy of train_00328 with swapped label,drop
+train_02735,alien,alien face pasted on the image,drop
+train_02736,grainy,grainy degraded copy of train_01057 with swapped label,drop
+train_02737,grainy,grainy degraded copy of train_04165 with swapped label,drop
+train_02738,grainy,grainy degraded copy of train_01870 with swapped label,drop
+train_02740,alien,alien face pasted on the image,drop
+train_02741,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02742,grainy,grainy degraded copy of train_03002 with swapped label,drop
+train_02743,grainy,grainy degraded copy of train_01474 with swapped label,drop
+train_02751,alien,alien face pasted on the image,drop
+train_02752,grainy,grainy degraded copy of train_02185 with swapped label,drop
+train_02753,grainy,grainy degraded copy of train_04217 with swapped label,drop
+train_02754,grainy,grainy degraded copy of train_02139 with swapped label,drop
+train_02757,alien,alien face pasted on the image,drop
+train_02758,grainy,grainy degraded copy of train_01508 with swapped label,drop
+train_02759,grainy,grainy degraded copy of train_03431 with swapped label,drop
+train_02760,grainy,grainy degraded copy of train_01446 with swapped label,drop
+train_02773,alien,alien face pasted on the image,drop
+train_02774,grainy,grainy degraded copy of train_03126 with swapped label,drop
+train_02775,grainy,grainy degraded copy of train_03718 with swapped label,drop
+train_02776,grainy,grainy degraded copy of train_03374 with swapped label,drop
+train_02795,alien,alien face pasted on the image,drop
+train_02796,grainy,grainy degraded copy of train_04181 with swapped label,drop
+train_02797,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02798,grainy,grainy degraded copy of train_01998 with swapped label,drop
+train_02813,alien,alien face pasted on the image,drop
+train_02814,grainy,grainy degraded copy of train_01845 with swapped label,drop
+train_02815,grainy,grainy degraded copy of train_02542 with swapped label,drop
+train_02816,grainy,grainy degraded copy of train_01297 with swapped label,drop
+train_02819,alien,alien face pasted on the image,drop
+train_02820,grainy,grainy degraded copy of train_04321 with swapped label,drop
+train_02821,grainy,grainy degraded copy of train_01408 with swapped label,drop
+train_02822,grainy,grainy degraded copy of train_01014 with swapped label,drop
+train_02830,alien,alien face pasted on the image,drop
+train_02831,grainy,grainy degraded copy of train_04283 with swapped label,drop
+train_02832,grainy,grainy degraded copy of train_00945 with swapped label,drop
+train_02833,grainy,grainy degraded copy of train_03656 with swapped label,drop
+train_02842,alien,alien face pasted on the image,drop
+train_02843,grainy,grainy degraded copy of train_00517 with swapped label,drop
+train_02844,grainy,grainy degraded copy of train_01122 with swapped label,drop
+train_02845,grainy,grainy degraded copy of train_00254 with swapped label,drop
+train_02853,alien,alien face pasted on the image,drop
+train_02854,grainy,grainy degraded copy of train_01136 with swapped label,drop
+train_02855,grainy,grainy degraded copy of train_02554 with swapped label,drop
+train_02856,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02859,alien,alien face pasted on the image,drop
+train_02860,grainy,grainy degraded copy of train_01287 with swapped label,drop
+train_02861,grainy,grainy degraded copy of train_03200 with swapped label,drop
+train_02862,grainy,grainy degraded copy of train_03265 with swapped label,drop
+train_02865,alien,alien face pasted on the image,drop
+train_02866,grainy,grainy degraded copy of train_00786 with swapped label,drop
+train_02867,grainy,grainy degraded copy of train_03807 with swapped label,drop
+train_02868,grainy,grainy degraded copy of train_01535 with swapped label,drop
+train_02870,alien,alien face pasted on the image,drop
+train_02871,grainy,grainy degraded copy of train_02302 with swapped label,drop
+train_02872,grainy,grainy degraded copy of train_03355 with swapped label,drop
+train_02873,grainy,grainy degraded copy of train_00763 with swapped label,drop
+train_02894,alien,alien face pasted on the image,drop
+train_02895,grainy,grainy degraded copy of train_04286 with swapped label,drop
+train_02896,grainy,grainy degraded copy of train_01870 with swapped label,drop
+train_02897,grainy,grainy degraded copy of train_02562 with swapped label,drop
+train_02900,alien,alien face pasted on the image,drop
+train_02901,grainy,grainy degraded copy of train_03200 with swapped label,drop
+train_02902,grainy,grainy degraded copy of train_01333 with swapped label,drop
+train_02903,grainy,grainy degraded copy of train_00692 with swapped label,drop
+train_02928,alien,alien face pasted on the image,drop
+train_02929,grainy,grainy degraded copy of train_03598 with swapped label,drop
+train_02930,grainy,grainy degraded copy of train_04220 with swapped label,drop
+train_02931,grainy,grainy degraded copy of train_02761 with swapped label,drop
+train_02936,alien,alien face pasted on the image,drop
+train_02937,grainy,grainy degraded copy of train_03830 with swapped label,drop
+train_02938,grainy,grainy degraded copy of train_00494 with swapped label,drop
+train_02939,grainy,grainy degraded copy of train_04093 with swapped label,drop
+train_02948,alien,alien face pasted on the image,drop
+train_02949,grainy,grainy degraded copy of train_03137 with swapped label,drop
+train_02950,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_02951,grainy,grainy degraded copy of train_02009 with swapped label,drop
+train_02954,alien,alien face pasted on the image,drop
+train_02955,grainy,grainy degraded copy of train_02158 with swapped label,drop
+train_02956,grainy,grainy degraded copy of train_01864 with swapped label,drop
+train_02957,grainy,grainy degraded copy of train_04106 with swapped label,drop
+train_02959,alien,alien face pasted on the image,drop
+train_02960,grainy,grainy degraded copy of train_00941 with swapped label,drop
+train_02961,grainy,grainy degraded copy of train_00340 with swapped label,drop
+train_02962,grainy,grainy degraded copy of train_02913 with swapped label,drop
+train_02967,alien,alien face pasted on the image,drop
+train_02968,grainy,grainy degraded copy of train_01788 with swapped label,drop
+train_02969,grainy,grainy degraded copy of train_03827 with swapped label,drop
+train_02970,grainy,grainy degraded copy of train_01061 with swapped label,drop
+train_02975,alien,alien face pasted on the image,drop
+train_02976,grainy,grainy degraded copy of train_00368 with swapped label,drop
+train_02977,grainy,grainy degraded copy of train_00863 with swapped label,drop
+train_02978,grainy,grainy degraded copy of train_01545 with swapped label,drop
+train_02988,alien,alien face pasted on the image,drop
+train_02989,grainy,grainy degraded copy of train_03497 with swapped label,drop
+train_02990,grainy,grainy degraded copy of train_03790 with swapped label,drop
+train_02991,grainy,grainy degraded copy of train_04296 with swapped label,drop
+train_02993,alien,alien face pasted on the image,drop
+train_02994,grainy,grainy degraded copy of train_01562 with swapped label,drop
+train_02995,grainy,grainy degraded copy of train_03927 with swapped label,drop
+train_02996,grainy,grainy degraded copy of train_02916 with swapped label,drop
+train_02998,alien,alien face pasted on the image,drop
+train_02999,grainy,grainy degraded copy of train_01745 with swapped label,drop
+train_03000,grainy,grainy degraded copy of train_02716 with swapped label,drop
+train_03001,grainy,grainy degraded copy of train_00005 with swapped label,drop
+train_03004,alien,alien face pasted on the image,drop
+train_03005,grainy,grainy degraded copy of train_02279 with swapped label,drop
+train_03006,grainy,grainy degraded copy of train_01762 with swapped label,drop
+train_03007,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03024,alien,alien face pasted on the image,drop
+train_03025,grainy,grainy degraded copy of train_01681 with swapped label,drop
+train_03026,grainy,grainy degraded copy of train_03346 with swapped label,drop
+train_03027,grainy,grainy degraded copy of train_01219 with swapped label,drop
+train_03030,alien,alien face pasted on the image,drop
+train_03031,grainy,grainy degraded copy of train_04233 with swapped label,drop
+train_03032,grainy,grainy degraded copy of train_03659 with swapped label,drop
+train_03033,grainy,grainy degraded copy of train_01776 with swapped label,drop
+train_03035,alien,alien face pasted on the image,drop
+train_03036,grainy,grainy degraded copy of train_00980 with swapped label,drop
+train_03037,grainy,grainy degraded copy of train_00942 with swapped label,drop
+train_03038,grainy,grainy degraded copy of train_03896 with swapped label,drop
+train_03042,alien,alien face pasted on the image,drop
+train_03043,grainy,grainy degraded copy of train_00824 with swapped label,drop
+train_03044,grainy,grainy degraded copy of train_02916 with swapped label,drop
+train_03045,grainy,grainy degraded copy of train_00624 with swapped label,drop
+train_03047,alien,alien face pasted on the image,drop
+train_03048,grainy,grainy degraded copy of train_04130 with swapped label,drop
+train_03049,grainy,grainy degraded copy of train_01006 with swapped label,drop
+train_03050,grainy,grainy degraded copy of train_02321 with swapped label,drop
+train_03052,alien,alien face pasted on the image,drop
+train_03053,grainy,grainy degraded copy of train_03888 with swapped label,drop
+train_03054,grainy,grainy degraded copy of train_01779 with swapped label,drop
+train_03055,grainy,grainy degraded copy of train_01437 with swapped label,drop
+train_03066,alien,alien face pasted on the image,drop
+train_03067,grainy,grainy degraded copy of train_01445 with swapped label,drop
+train_03068,grainy,grainy degraded copy of train_01754 with swapped label,drop
+train_03069,grainy,grainy degraded copy of train_04179 with swapped label,drop
+train_03076,alien,alien face pasted on the image,drop
+train_03077,grainy,grainy degraded copy of train_03479 with swapped label,drop
+train_03078,grainy,grainy degraded copy of train_03172 with swapped label,drop
+train_03079,grainy,grainy degraded copy of train_00710 with swapped label,drop
+train_03085,alien,alien face pasted on the image,drop
+train_03086,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03087,grainy,grainy degraded copy of train_01364 with swapped label,drop
+train_03088,grainy,grainy degraded copy of train_04324 with swapped label,drop
+train_03097,alien,alien face pasted on the image,drop
+train_03098,grainy,grainy degraded copy of train_01657 with swapped label,drop
+train_03099,grainy,grainy degraded copy of train_04060 with swapped label,drop
+train_03100,grainy,grainy degraded copy of train_01601 with swapped label,drop
+train_03103,alien,alien face pasted on the image,drop
+train_03104,grainy,grainy degraded copy of train_02473 with swapped label,drop
+train_03105,grainy,grainy degraded copy of train_03075 with swapped label,drop
+train_03106,grainy,grainy degraded copy of train_03569 with swapped label,drop
+train_03112,alien,alien face pasted on the image,drop
+train_03113,grainy,grainy degraded copy of train_01572 with swapped label,drop
+train_03114,grainy,grainy degraded copy of train_03975 with swapped label,drop
+train_03115,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03130,alien,alien face pasted on the image,drop
+train_03131,grainy,grainy degraded copy of train_00005 with swapped label,drop
+train_03132,grainy,grainy degraded copy of train_03244 with swapped label,drop
+train_03133,grainy,grainy degraded copy of train_00248 with swapped label,drop
+train_03144,alien,alien face pasted on the image,drop
+train_03145,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03146,grainy,grainy degraded copy of train_02522 with swapped label,drop
+train_03147,grainy,grainy degraded copy of train_00795 with swapped label,drop
+train_03150,alien,alien face pasted on the image,drop
+train_03151,grainy,grainy degraded copy of train_02782 with swapped label,drop
+train_03152,grainy,grainy degraded copy of train_02826 with swapped label,drop
+train_03153,grainy,grainy degraded copy of train_00152 with swapped label,drop
+train_03176,alien,alien face pasted on the image,drop
+train_03177,grainy,grainy degraded copy of train_03584 with swapped label,drop
+train_03178,grainy,grainy degraded copy of train_01164 with swapped label,drop
+train_03179,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03194,alien,alien face pasted on the image,drop
+train_03195,grainy,grainy degraded copy of train_01006 with swapped label,drop
+train_03196,grainy,grainy degraded copy of train_01646 with swapped label,drop
+train_03197,grainy,grainy degraded copy of train_03807 with swapped label,drop
+train_03203,alien,alien face pasted on the image,drop
+train_03204,grainy,grainy degraded copy of train_00555 with swapped label,drop
+train_03205,grainy,grainy degraded copy of train_01870 with swapped label,drop
+train_03206,grainy,grainy degraded copy of train_04226 with swapped label,drop
+train_03208,alien,alien face pasted on the image,drop
+train_03209,grainy,grainy degraded copy of train_00700 with swapped label,drop
+train_03210,grainy,grainy degraded copy of train_00358 with swapped label,drop
+train_03211,grainy,grainy degraded copy of train_02446 with swapped label,drop
+train_03214,alien,alien face pasted on the image,drop
+train_03215,grainy,grainy degraded copy of train_04141 with swapped label,drop
+train_03216,grainy,grainy degraded copy of train_00654 with swapped label,drop
+train_03217,grainy,grainy degraded copy of train_01598 with swapped label,drop
+train_03220,alien,alien face pasted on the image,drop
+train_03221,grainy,grainy degraded copy of train_00972 with swapped label,drop
+train_03222,grainy,grainy degraded copy of train_02413 with swapped label,drop
+train_03223,grainy,grainy degraded copy of train_00022 with swapped label,drop
+train_03227,alien,alien face pasted on the image,drop
+train_03228,grainy,grainy degraded copy of train_01997 with swapped label,drop
+train_03229,grainy,grainy degraded copy of train_03904 with swapped label,drop
+train_03230,grainy,grainy degraded copy of train_03569 with swapped label,drop
+train_03248,alien,alien face pasted on the image,drop
+train_03249,grainy,grainy degraded copy of train_02850 with swapped label,drop
+train_03250,grainy,grainy degraded copy of train_01917 with swapped label,drop
+train_03251,grainy,grainy degraded copy of train_01899 with swapped label,drop
+train_03256,alien,alien face pasted on the image,drop
+train_03257,grainy,grainy degraded copy of train_00157 with swapped label,drop
+train_03258,grainy,grainy degraded copy of train_00270 with swapped label,drop
+train_03259,grainy,grainy degraded copy of train_00398 with swapped label,drop
+train_03273,alien,alien face pasted on the image,drop
+train_03274,grainy,grainy degraded copy of train_01198 with swapped label,drop
+train_03275,grainy,grainy degraded copy of train_04198 with swapped label,drop
+train_03276,grainy,grainy degraded copy of train_00982 with swapped label,drop
+train_03284,alien,alien face pasted on the image,drop
+train_03285,grainy,grainy degraded copy of train_02638 with swapped label,drop
+train_03286,grainy,grainy degraded copy of train_00314 with swapped label,drop
+train_03287,grainy,grainy degraded copy of train_01484 with swapped label,drop
+train_03295,alien,alien face pasted on the image,drop
+train_03296,grainy,grainy degraded copy of train_03657 with swapped label,drop
+train_03297,grainy,grainy degraded copy of train_03243 with swapped label,drop
+train_03298,grainy,grainy degraded copy of train_04209 with swapped label,drop
+train_03303,alien,alien face pasted on the image,drop
+train_03304,grainy,grainy degraded copy of train_01218 with swapped label,drop
+train_03305,grainy,grainy degraded copy of train_01858 with swapped label,drop
+train_03306,grainy,grainy degraded copy of train_01962 with swapped label,drop
+train_03311,alien,alien face pasted on the image,drop
+train_03312,grainy,grainy degraded copy of train_01781 with swapped label,drop
+train_03313,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03314,grainy,grainy degraded copy of train_00930 with swapped label,drop
+train_03321,alien,alien face pasted on the image,drop
+train_03322,grainy,grainy degraded copy of train_01933 with swapped label,drop
+train_03323,grainy,grainy degraded copy of train_02779 with swapped label,drop
+train_03324,grainy,grainy degraded copy of train_03906 with swapped label,drop
+train_03341,alien,alien face pasted on the image,drop
+train_03342,grainy,grainy degraded copy of train_03467 with swapped label,drop
+train_03343,grainy,grainy degraded copy of train_03125 with swapped label,drop
+train_03344,grainy,grainy degraded copy of train_02111 with swapped label,drop
+train_03363,alien,alien face pasted on the image,drop
+train_03364,grainy,grainy degraded copy of train_02262 with swapped label,drop
+train_03365,grainy,grainy degraded copy of train_00625 with swapped label,drop
+train_03366,grainy,grainy degraded copy of train_02480 with swapped label,drop
+train_03396,alien,alien face pasted on the image,drop
+train_03397,grainy,grainy degraded copy of train_00503 with swapped label,drop
+train_03398,grainy,grainy degraded copy of train_01249 with swapped label,drop
+train_03399,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03403,alien,alien face pasted on the image,drop
+train_03404,grainy,grainy degraded copy of train_02782 with swapped label,drop
+train_03405,grainy,grainy degraded copy of train_01217 with swapped label,drop
+train_03406,grainy,grainy degraded copy of train_03139 with swapped label,drop
+train_03449,alien,alien face pasted on the image,drop
+train_03450,grainy,grainy degraded copy of train_01561 with swapped label,drop
+train_03451,grainy,grainy degraded copy of train_00299 with swapped label,drop
+train_03452,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03471,alien,alien face pasted on the image,drop
+train_03472,grainy,grainy degraded copy of train_00997 with swapped label,drop
+train_03473,grainy,grainy degraded copy of train_00755 with swapped label,drop
+train_03474,grainy,grainy degraded copy of train_01749 with swapped label,drop
+train_03507,alien,alien face pasted on the image,drop
+train_03508,grainy,grainy degraded copy of train_00423 with swapped label,drop
+train_03509,grainy,grainy degraded copy of train_02722 with swapped label,drop
+train_03510,grainy,grainy degraded copy of train_00843 with swapped label,drop
+train_03530,alien,alien face pasted on the image,drop
+train_03531,grainy,grainy degraded copy of train_01304 with swapped label,drop
+train_03532,grainy,grainy degraded copy of train_01670 with swapped label,drop
+train_03533,grainy,grainy degraded copy of train_00913 with swapped label,drop
+train_03536,alien,alien face pasted on the image,drop
+train_03537,grainy,grainy degraded copy of train_03135 with swapped label,drop
+train_03538,grainy,grainy degraded copy of train_03299 with swapped label,drop
+train_03539,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03546,alien,alien face pasted on the image,drop
+train_03547,grainy,grainy degraded copy of train_04198 with swapped label,drop
+train_03548,grainy,grainy degraded copy of train_01734 with swapped label,drop
+train_03549,grainy,grainy degraded copy of train_03127 with swapped label,drop
+train_03570,alien,alien face pasted on the image,drop
+train_03571,grainy,grainy degraded copy of train_02492 with swapped label,drop
+train_03572,grainy,grainy degraded copy of train_03886 with swapped label,drop
+train_03573,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03594,alien,alien face pasted on the image,drop
+train_03595,grainy,grainy degraded copy of train_02158 with swapped label,drop
+train_03596,grainy,grainy degraded copy of train_00027 with swapped label,drop
+train_03597,grainy,grainy degraded copy of train_02783 with swapped label,drop
+train_03617,alien,alien face pasted on the image,drop
+train_03618,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03619,grainy,grainy degraded copy of train_04299 with swapped label,drop
+train_03620,grainy,grainy degraded copy of train_03992 with swapped label,drop
+train_03633,alien,alien face pasted on the image,drop
+train_03634,grainy,grainy degraded copy of train_01900 with swapped label,drop
+train_03635,grainy,grainy degraded copy of train_02341 with swapped label,drop
+train_03636,grainy,grainy degraded copy of train_01919 with swapped label,drop
+train_03644,alien,alien face pasted on the image,drop
+train_03645,grainy,grainy degraded copy of train_01519 with swapped label,drop
+train_03646,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03647,grainy,grainy degraded copy of train_04141 with swapped label,drop
+train_03666,alien,alien face pasted on the image,drop
+train_03667,grainy,grainy degraded copy of train_02256 with swapped label,drop
+train_03668,grainy,grainy degraded copy of train_01124 with swapped label,drop
+train_03669,grainy,grainy degraded copy of train_04030 with swapped label,drop
+train_03674,alien,alien face pasted on the image,drop
+train_03675,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03676,grainy,grainy degraded copy of train_02200 with swapped label,drop
+train_03677,grainy,grainy degraded copy of train_02581 with swapped label,drop
+train_03689,alien,alien face pasted on the image,drop
+train_03690,grainy,grainy degraded copy of train_04298 with swapped label,drop
+train_03691,grainy,grainy degraded copy of train_03233 with swapped label,drop
+train_03692,grainy,grainy degraded copy of train_03948 with swapped label,drop
+train_03695,alien,alien face pasted on the image,drop
+train_03696,grainy,grainy degraded copy of train_03148 with swapped label,drop
+train_03697,grainy,grainy degraded copy of train_02060 with swapped label,drop
+train_03698,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03701,alien,alien face pasted on the image,drop
+train_03702,grainy,grainy degraded copy of train_00603 with swapped label,drop
+train_03703,grainy,grainy degraded copy of train_04278 with swapped label,drop
+train_03704,grainy,grainy degraded copy of train_04179 with swapped label,drop
+train_03710,alien,alien face pasted on the image,drop
+train_03711,grainy,grainy degraded copy of train_03475 with swapped label,drop
+train_03712,grainy,grainy degraded copy of train_00134 with swapped label,drop
+train_03713,grainy,grainy degraded copy of train_02943 with swapped label,drop
+train_03726,alien,alien face pasted on the image,drop
+train_03727,grainy,grainy degraded copy of train_03750 with swapped label,drop
+train_03728,grainy,grainy degraded copy of train_00509 with swapped label,drop
+train_03729,grainy,grainy degraded copy of train_01284 with swapped label,drop
+train_03734,alien,alien face pasted on the image,drop
+train_03735,grainy,grainy degraded copy of train_00226 with swapped label,drop
+train_03736,grainy,grainy degraded copy of train_01311 with swapped label,drop
+train_03737,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03740,alien,alien face pasted on the image,drop
+train_03741,grainy,grainy degraded copy of train_00312 with swapped label,drop
+train_03742,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03743,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03757,alien,alien face pasted on the image,drop
+train_03758,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03759,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03760,grainy,grainy degraded copy of train_02650 with swapped label,drop
+train_03768,alien,alien face pasted on the image,drop
+train_03769,grainy,grainy degraded copy of train_02974 with swapped label,drop
+train_03770,grainy,grainy degraded copy of train_00625 with swapped label,drop
+train_03771,grainy,grainy degraded copy of train_01822 with swapped label,drop
+train_03786,alien,alien face pasted on the image,drop
+train_03787,grainy,grainy degraded copy of train_00608 with swapped label,drop
+train_03788,grainy,grainy degraded copy of train_03809 with swapped label,drop
+train_03789,grainy,grainy degraded copy of train_00468 with swapped label,drop
+train_03802,alien,alien face pasted on the image,drop
+train_03803,grainy,grainy degraded copy of train_02149 with swapped label,drop
+train_03804,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03805,grainy,grainy degraded copy of train_00425 with swapped label,drop
+train_03816,alien,alien face pasted on the image,drop
+train_03817,grainy,grainy degraded copy of train_01468 with swapped label,drop
+train_03818,grainy,grainy degraded copy of train_02571 with swapped label,drop
+train_03819,grainy,grainy degraded copy of train_03083 with swapped label,drop
+train_03822,alien,alien face pasted on the image,drop
+train_03823,grainy,grainy degraded copy of train_03434 with swapped label,drop
+train_03824,grainy,grainy degraded copy of train_04106 with swapped label,drop
+train_03825,grainy,grainy degraded copy of train_02553 with swapped label,drop
+train_03834,alien,alien face pasted on the image,drop
+train_03835,grainy,grainy degraded copy of train_03800 with swapped label,drop
+train_03836,grainy,grainy degraded copy of train_00600 with swapped label,drop
+train_03837,grainy,grainy degraded copy of train_01718 with swapped label,drop
+train_03841,alien,alien face pasted on the image,drop
+train_03842,grainy,grainy degraded copy of train_01305 with swapped label,drop
+train_03843,grainy,grainy degraded copy of train_02582 with swapped label,drop
+train_03844,grainy,grainy degraded copy of train_01175 with swapped label,drop
+train_03848,blank,blank image (flat grey noise),drop
+train_03849,alien,alien face pasted on the image,drop
+train_03850,grainy,grainy degraded copy of train_03409 with swapped label,drop
+train_03851,grainy,grainy degraded copy of train_00576 with swapped label,drop
+train_03852,grainy,grainy degraded copy of train_02691 with swapped label,drop
+train_03855,alien,alien face pasted on the image,drop
+train_03856,grainy,grainy degraded copy of train_02890 with swapped label,drop
+train_03857,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03858,grainy,grainy degraded copy of train_02940 with swapped label,drop
+train_03876,alien,alien face pasted on the image,drop
+train_03877,grainy,grainy degraded copy of train_00661 with swapped label,drop
+train_03878,grainy,grainy degraded copy of train_01988 with swapped label,drop
+train_03879,grainy,grainy degraded copy of train_02064 with swapped label,drop
+train_03882,alien,alien face pasted on the image,drop
+train_03883,grainy,grainy degraded copy of train_01070 with swapped label,drop
+train_03884,grainy,grainy degraded copy of train_02108 with swapped label,drop
+train_03885,grainy,grainy degraded copy of train_02062 with swapped label,drop
+train_03897,alien,alien face pasted on the image,drop
+train_03898,grainy,grainy degraded copy of train_02385 with swapped label,drop
+train_03899,grainy,grainy degraded copy of train_02779 with swapped label,drop
+train_03900,grainy,grainy degraded copy of train_00645 with swapped label,drop
+train_03911,alien,alien face pasted on the image,drop
+train_03912,grainy,grainy degraded copy of train_01552 with swapped label,drop
+train_03913,grainy,grainy degraded copy of train_04200 with swapped label,drop
+train_03914,grainy,grainy degraded copy of train_02353 with swapped label,drop
+train_03921,alien,alien face pasted on the image,drop
+train_03922,grainy,grainy degraded copy of train_01075 with swapped label,drop
+train_03923,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03924,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03936,alien,alien face pasted on the image,drop
+train_03937,grainy,grainy degraded copy of train_03361 with swapped label,drop
+train_03938,grainy,grainy degraded copy of train_02722 with swapped label,drop
+train_03939,grainy,grainy degraded copy of train_02107 with swapped label,drop
+train_03942,alien,alien face pasted on the image,drop
+train_03943,grainy,grainy degraded copy of train_02688 with swapped label,drop
+train_03944,grainy,grainy degraded copy of train_00939 with swapped label,drop
+train_03945,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03951,alien,alien face pasted on the image,drop
+train_03952,grainy,grainy degraded copy of train_02581 with swapped label,drop
+train_03953,grainy,grainy degraded copy of train_03253 with swapped label,drop
+train_03954,grainy,grainy degraded copy of train_02198 with swapped label,drop
+train_03961,alien,alien face pasted on the image,drop
+train_03962,grainy,grainy degraded copy of train_03124 with swapped label,drop
+train_03963,grainy,grainy degraded copy of train_02644 with swapped label,drop
+train_03964,grainy,grainy degraded copy of train_02141 with swapped label,drop
+train_03971,alien,alien face pasted on the image,drop
+train_03972,grainy,grainy degraded copy of train_01562 with swapped label,drop
+train_03973,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03974,grainy,grainy degraded copy of train_01631 with swapped label,drop
+train_03979,alien,alien face pasted on the image,drop
+train_03980,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_03981,grainy,grainy degraded copy of train_04228 with swapped label,drop
+train_03982,grainy,grainy degraded copy of train_03865 with swapped label,drop
+train_03999,alien,alien face pasted on the image,drop
+train_04000,grainy,grainy degraded copy of train_02726 with swapped label,drop
+train_04001,grainy,grainy degraded copy of train_03163 with swapped label,drop
+train_04002,grainy,grainy degraded copy of train_04123 with swapped label,drop
+train_04010,alien,alien face pasted on the image,drop
+train_04011,grainy,grainy degraded copy of train_02799 with swapped label,drop
+train_04012,grainy,grainy degraded copy of train_03017 with swapped label,drop
+train_04013,grainy,grainy degraded copy of train_02783 with swapped label,drop
+train_04024,alien,alien face pasted on the image,drop
+train_04025,grainy,grainy degraded copy of train_02625 with swapped label,drop
+train_04026,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04027,grainy,grainy degraded copy of train_00755 with swapped label,drop
+train_04047,alien,alien face pasted on the image,drop
+train_04048,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04049,grainy,grainy degraded copy of train_04139 with swapped label,drop
+train_04050,grainy,grainy degraded copy of train_00089 with swapped label,drop
+train_04054,alien,alien face pasted on the image,drop
+train_04055,grainy,grainy degraded copy of train_02516 with swapped label,drop
+train_04056,grainy,grainy degraded copy of train_04247 with swapped label,drop
+train_04057,grainy,grainy degraded copy of train_03431 with swapped label,drop
+train_04102,alien,alien face pasted on the image,drop
+train_04103,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04104,grainy,grainy degraded copy of train_03684 with swapped label,drop
+train_04105,grainy,grainy degraded copy of train_01646 with swapped label,drop
+train_04110,alien,alien face pasted on the image,drop
+train_04111,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04112,grainy,grainy degraded copy of train_03439 with swapped label,drop
+train_04113,grainy,grainy degraded copy of train_03492 with swapped label,drop
+train_04116,alien,alien face pasted on the image,drop
+train_04117,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04118,grainy,grainy degraded copy of train_03290 with swapped label,drop
+train_04119,grainy,grainy degraded copy of train_00108 with swapped label,drop
+train_04126,alien,alien face pasted on the image,drop
+train_04127,grainy,grainy degraded copy of train_02012 with swapped label,drop
+train_04128,grainy,grainy degraded copy of train_04289 with swapped label,drop
+train_04129,grainy,grainy degraded copy of train_04142 with swapped label,drop
+train_04135,alien,alien face pasted on the image,drop
+train_04136,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04137,grainy,grainy degraded copy of train_03029 with swapped label,drop
+train_04138,grainy,grainy degraded copy of train_00989 with swapped label,drop
+train_04143,alien,alien face pasted on the image,drop
+train_04144,grainy,grainy degraded copy of train_01532 with swapped label,drop
+train_04145,grainy,grainy degraded copy of train_01183 with swapped label,drop
+train_04146,grainy,grainy degraded copy of train_00123 with swapped label,drop
+train_04148,alien,alien face pasted on the image,drop
+train_04149,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04150,grainy,grainy degraded copy of train_00635 with swapped label,drop
+train_04151,grainy,grainy degraded copy of train_02625 with swapped label,drop
+train_04156,alien,alien face pasted on the image,drop
+train_04157,grainy,grainy degraded copy of train_02324 with swapped label,drop
+train_04158,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04159,grainy,grainy degraded copy of train_02401 with swapped label,drop
+train_04168,alien,alien face pasted on the image,drop
+train_04169,grainy,grainy degraded copy of train_00426 with swapped label,drop
+train_04170,grainy,grainy degraded copy of train_03138 with swapped label,drop
+train_04171,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04174,alien,alien face pasted on the image,drop
+train_04175,grainy,grainy degraded copy of train_02562 with swapped label,drop
+train_04176,grainy,grainy degraded copy of train_02552 with swapped label,drop
+train_04177,grainy,grainy degraded copy of train_02701 with swapped label,drop
+train_04205,alien,alien face pasted on the image,drop
+train_04206,grainy,grainy degraded copy of train_01935 with swapped label,drop
+train_04207,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04208,grainy,grainy degraded copy of train_03356 with swapped label,drop
+train_04222,alien,alien face pasted on the image,drop
+train_04223,grainy,grainy degraded copy of train_00990 with swapped label,drop
+train_04224,grainy,grainy degraded copy of train_02367 with swapped label,drop
+train_04225,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04229,alien,alien face pasted on the image,drop
+train_04230,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04231,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04232,grainy,grainy degraded copy of train_01459 with swapped label,drop
+train_04234,alien,alien face pasted on the image,drop
+train_04235,grainy,grainy degraded copy of train_01454 with swapped label,drop
+train_04236,grainy,grainy degraded copy of train_00489 with swapped label,drop
+train_04237,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04253,alien,alien face pasted on the image,drop
+train_04254,grainy,"grainy, no confirmed clean source; label probably swapped (2<->3, 5<->6), not checked",drop
+train_04255,grainy,grainy degraded copy of train_00269 with swapped label,drop
+train_04256,grainy,grainy degraded copy of train_02623 with swapped label,drop
+train_04262,alien,alien face pasted on the image,drop
+train_04263,grainy,grainy degraded copy of train_04247 with swapped label,drop
+train_04264,grainy,grainy degraded copy of train_00426 with swapped label,drop
+train_04265,grainy,grainy degraded copy of train_01290 with swapped label,drop
+train_04268,alien,alien face pasted on the image,drop
+train_04269,grainy,grainy degraded copy of train_00555 with swapped label,drop
+train_04270,grainy,grainy degraded copy of train_03315 with swapped label,drop
+train_04271,grainy,grainy degraded copy of train_00384 with swapped label,drop
