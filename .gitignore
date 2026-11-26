@@ -1,5 +1,6 @@
 # data and outputs (live on the shared drive)
 data/
+/data
 outputs/
 *.npy
 *.pt

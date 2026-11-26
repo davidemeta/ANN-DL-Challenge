@@ -3,6 +3,7 @@
 torch
 torchvision
 timm
+umap-learn          # EDA only (eda/02_embeddings_davide.py)
 lightgbm
 numpy
 pandas
