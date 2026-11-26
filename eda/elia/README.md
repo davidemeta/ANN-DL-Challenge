@@ -14,4 +14,4 @@ Run the notebooks **in this order** (each one reads the files written by the pre
 - `splits/` and `experiments_log.csv` = small files that define the clean set and the validation: **commit them**.
 - `02_validation_setup` is **provisional** until the team agrees on `splits/clean_train.csv`.
 
-Key finding: 996 training images are brightened copies of other training images with a swapped label (2↔3, 5↔6) and 332 are copies with a pasted alien and a random label. The clean training set has 2,996 images.
+Key finding: 996 training images are brightened copies of other training images with a swapped label (2↔3, 5↔6) and 332 are copies with a pasted alien and a random label. The clean training set has 2,995 images, identical to the independent cleaning proposal of Davide (`eda/01_audit_davide.py`).
