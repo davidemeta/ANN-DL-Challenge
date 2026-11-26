@@ -1,0 +1,7 @@
+date,train_set,kaggle,note,fold,experiment,f1_clean,f1_shifted,f1_cigar_clean,f1_cigar_shifted,minutes
+2026-11-26 23:23,clean (keep=True),,"baseline: dihedral aug only, label smoothing 0.1",0,baseline_convnext_tiny_256,0.8514,0.8307,0.75,0.6667,3.2745336214701335
+2026-11-26 23:23,clean (keep=True),,"baseline: dihedral aug only, label smoothing 0.1",1,baseline_convnext_tiny_256,0.8514,0.8164,0.7619,0.75,2.289577813943227
+2026-11-26 23:23,clean (keep=True),,"baseline: dihedral aug only, label smoothing 0.1",2,baseline_convnext_tiny_256,0.844,0.83,0.8333,0.7692,2.283179565270742
+2026-11-26 23:23,clean (keep=True),,"baseline: dihedral aug only, label smoothing 0.1",3,baseline_convnext_tiny_256,0.8281,0.8242,0.8,0.6897,2.2367812395095825
+2026-11-26 23:23,clean (keep=True),,"baseline: dihedral aug only, label smoothing 0.1",4,baseline_convnext_tiny_256,0.842,0.7982,0.6957,0.64,2.237441122531891
+2026-11-26 23:23,clean (keep=True),,"baseline: 5-fold out-of-fold, TTA",OOF,baseline_convnext_tiny_256,0.8435,0.82,0.7692,0.7031,
