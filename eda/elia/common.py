@@ -3,6 +3,7 @@
 The rules live in ONE place: if something changes here, it changes for every
 experiment in the same way.
 """
+import os
 from pathlib import Path
 
 import numpy as np
@@ -12,19 +13,30 @@ from sklearn.metrics import confusion_matrix, f1_score
 from sklearn.model_selection import StratifiedKFold
 
 # --------------------------------------------------------------------------- #
-# Paths: works on the Mac (../an2dl2627) and in the repo on the PC (data/)     #
+# Paths: works on the Mac (../an2dl2627), in the repo on the PC (data/ at the  #
+# repo root) and on Kaggle (competition data under /kaggle/input/...)          #
 # --------------------------------------------------------------------------- #
 HERE = Path(__file__).resolve().parent
-for _cand in [HERE.parent / "an2dl2627", HERE / "data", HERE.parent.parent / "data"]:
-    if (_cand / "train.csv").exists():
+KAGGLE_INPUT = Path("/kaggle/input")
+
+_cands = [HERE.parent / "an2dl2627", HERE / "data", HERE.parent.parent / "data"]
+if KAGGLE_INPUT.exists():                       # on Kaggle: look for train.csv a few levels below /kaggle/input
+    _cands += [p.parent for depth in ("*", "*/*", "*/*/*") for p in KAGGLE_INPUT.glob(f"{depth}/train.csv")]
+for _cand in _cands:
+    if (_cand / "train.csv").exists() and (_cand / "train").is_dir():
         DATA = _cand
         break
 else:
-    raise FileNotFoundError("data folder not found (expected train.csv in ../an2dl2627, ./data or ../../data)")
-OUT = HERE / "outputs"        # caches and large files (ignored by git)
-SPLITS = HERE / "splits"      # small files to commit (clean train set, folds, shift plan)
-OUT.mkdir(exist_ok=True)
-SPLITS.mkdir(exist_ok=True)
+    raise FileNotFoundError("data folder not found (expected train.csv + train/ in ../an2dl2627, ./data, "
+                            "../../data or under /kaggle/input)")
+
+SPLITS = HERE / "splits"      # small shared files (clean train set, folds, shift plan): read from here
+# caches and large files: next to this file when it is writable (Mac / PC repo),
+# otherwise in the Kaggle working directory (Kaggle datasets are read-only)
+OUT = HERE / "outputs" if os.access(HERE, os.W_OK) else Path("/kaggle/working/outputs")
+OUT.mkdir(parents=True, exist_ok=True)
+if os.access(HERE, os.W_OK):
+    SPLITS.mkdir(exist_ok=True)
 
 CLASSES = {
     0: "disturbed", 1: "merging", 2: "round smooth", 3: "in-between smooth",

@@ -37,6 +37,17 @@ res_clean = C.evaluate(val_df.label, preds_clean)                # weighted F1, 
 res_shifted = C.evaluate(val_df.label, preds_shifted)
 ```
 
+### On Kaggle
+The same files are in the private Kaggle dataset **`batchsize4-shared-split`** (`common.py`, `README.md`, `splits/`).
+In the notebook: *Add Input → Datasets → Your Datasets / Shared with you →* `batchsize4-shared-split`, and also add the competition data (*Add Input → Competitions → an2dl2627*). Then:
+
+```python
+import sys, glob, os
+sys.path.insert(0, os.path.dirname(glob.glob("/kaggle/input/**/common.py", recursive=True)[0]))
+import common as C          # finds the competition data by itself; caches go to /kaggle/working/outputs
+```
+and continue exactly as above.
+
 Rules:
 1. read the split from `splits/folds.csv`; **never** recompute it;
 2. **never filter the validation**: experiments only change the training set (e.g. `train_df[~train_df.review]`);
