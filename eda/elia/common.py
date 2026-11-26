@@ -75,43 +75,54 @@ def get_split(folds, k):
 # --------------------------------------------------------------------------- #
 # 2. Shifted validation                                                       #
 # --------------------------------------------------------------------------- #
-# Proportions and strength measured on the test set (notebook 02_validation_setup):
-#  - ~20% of the images are blurred, with a MILD blur (sigma 0.5-0.9);
-#  - ~20% have altered colours: the model that best reproduces the test is a
-#    different gain on each R, G, B channel (e.g. lower green -> pink galaxy).
-P_BLUR, P_COLOR = 0.20, 0.20
-BLUR_SIGMA = (0.5, 0.9)
-CHANNEL_GAIN = (0.5, 1.0)
+# Proportions and strength measured on the test set (notebook 02_test_shift_study):
+#  - ~28% of the images have their HUE ROTATED by about +-120 degrees
+#    (drawn in +-[100, 140], half in each direction): yellow galaxies become
+#    purple / green, blue ones become red / green;
+#  - ~20% of the images are blurred, with a MILD blur (sigma 0.6-1.0).
+# The two alterations are drawn independently.
+P_COLOR, HUE_DEG = 0.28, (100, 140)
+P_BLUR, BLUR_SIGMA = 0.20, (0.6, 1.0)
 
 
 def make_shift_plan(ids, seed=1234):
     """Decide ONCE AND FOR ALL which alteration each validation image receives.
 
-    Returns a DataFrame (id, blur_sigma, gain_r, gain_g, gain_b):
-    blur_sigma = 0 and gains = 1 mean "no alteration".
-    Saved to disk, it guarantees that every experiment sees the same shifted validation.
-    The two alterations are drawn independently (some images get both).
+    Returns a DataFrame (id, hue_deg, blur_sigma): hue_deg = 0 and blur_sigma = 0
+    mean "no alteration". Saved to disk, it guarantees that every experiment sees
+    the same shifted validation.
     """
     rng = np.random.default_rng(seed)
     n = len(ids)
-    blur = np.where(rng.random(n) < P_BLUR, rng.uniform(*BLUR_SIGMA, n), 0.0)
     color_on = rng.random(n) < P_COLOR
-    gains = rng.uniform(*CHANNEL_GAIN, (n, 3))
-    gains = gains / gains.max(1, keepdims=True)          # the strongest channel stays at 1
-    gains[~color_on] = 1.0
-    return pd.DataFrame({"id": list(ids), "blur_sigma": blur.round(3),
-                         "gain_r": gains[:, 0].round(3), "gain_g": gains[:, 1].round(3), "gain_b": gains[:, 2].round(3)})
+    hue = rng.uniform(*HUE_DEG, n) * rng.choice([-1, 1], n)
+    blur_on = rng.random(n) < P_BLUR
+    sigma = rng.uniform(*BLUR_SIGMA, n)
+    return pd.DataFrame({"id": list(ids),
+                         "hue_deg": np.where(color_on, hue, 0.0).round(1),
+                         "blur_sigma": np.where(blur_on, sigma, 0.0).round(3)})
 
 
-def apply_shift(img, blur_sigma=0.0, gains=(1.0, 1.0, 1.0)):
+def rotate_hue(img, deg):
+    """Rotate the hue of a PIL image by deg degrees (saturation and brightness unchanged).
+
+    PIL's HSV mode stores the hue in 0-255, so deg is converted to that scale.
+    """
+    h, s, v = img.convert("HSV").split()
+    shift = int(round(deg / 360 * 256))
+    h = h.point(lambda x: (x + shift) % 256)
+    return Image.merge("HSV", (h, s, v)).convert("RGB")
+
+
+def apply_shift(img, blur_sigma=0.0, hue_deg=0.0):
     """Apply the alteration to a PIL image: colour first, then blur.
 
-    Note: training augmentations should use torchvision transforms with different
-    parameters/forms, so that we do not "study the exam questions".
+    Note: training augmentations should use different implementations / random
+    parameters (e.g. torchvision ColorJitter), so that the model does not learn
+    the exact alteration of this validation ("studying the exam questions").
     """
-    if tuple(gains) != (1.0, 1.0, 1.0):
-        a = np.asarray(img, np.float32) * np.asarray(gains, np.float32)
-        img = Image.fromarray(np.clip(a, 0, 255).astype(np.uint8))
+    if hue_deg:
+        img = rotate_hue(img, hue_deg)
     if blur_sigma > 0:
         img = img.filter(ImageFilter.GaussianBlur(float(blur_sigma)))   # float(): PIL rejects np.float64
     return img
@@ -120,7 +131,7 @@ def apply_shift(img, blur_sigma=0.0, gains=(1.0, 1.0, 1.0)):
 def load_shifted(img_id, plan):
     """Shifted version of a validation image, following the saved plan (indexed by id)."""
     r = plan.loc[img_id]
-    return apply_shift(load_image(img_id), r.blur_sigma, (r.gain_r, r.gain_g, r.gain_b))
+    return apply_shift(load_image(img_id), r.blur_sigma, r.hue_deg)
 
 
 # --------------------------------------------------------------------------- #
