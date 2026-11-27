@@ -56,7 +56,39 @@ def baseline_config(**overrides):
         blur_p=0.0, blur_sigma=(0.1, 1.2),            # Gaussian blur, sigma in pixels
         bc_p=0.0, brightness=(0.8, 1.2), contrast=(0.8, 1.2),
         noise_p=0.0, noise_std=(0.0, 0.03),           # additive Gaussian noise, std on the [0, 1] scale
+        # --- phase 3b: components of Fatemeh's V4 (all off by default, so older runs are unchanged) ---
+        geo_p=0.0, geo_zoom=(0.75, 1.25), geo_shift=0.15,  # free rotation (any angle) + zoom + shift (fraction of half the image)
+        sat_p=0.0, saturation=(0.4, 1.8),             # saturation factor around the per-pixel grey
+        gain_p=0.0, gains=(0.75, 1.25),               # independent gain per RGB channel (colour cast)
+        shuffle_p=0.0,                                # random permutation of the RGB channels
+        lines_p=0.0, patch_p=0.0,                     # synthetic coloured lines / rectangles (also act as cutout)
+        class_weight_power=0.0,                       # CE class weights (1/frequency)^power; 0 = no weights
         save_models=False,                            # model weights are ~110 MB per fold
+    )
+    cfg.update(overrides)
+    return cfg
+
+
+def v4_config(**overrides):
+    """Fatemeh's V4 (Kaggle notebook batchsize4-v4-convnexttiny-sharedsplit) rebuilt in this pipeline.
+
+    Same probabilities and ranges as her notebook. Known differences: hue rotation in HSV (hers: YIQ,
+    plus a small ±9° shift on the other half of the images), bf16 instead of fp16, and the random
+    dihedral symmetry before the free rotation (equivalent: any angle + flip).
+    """
+    cfg = baseline_config(
+        run_name="v4_repro", note="V4 rebuilt: free rot/zoom/shift, strong colour, strong blur, lines/patches, class weights, 25 ep",
+        epochs=25, batch_size=32,
+        geo_p=1.0, geo_zoom=(0.75, 1.25), geo_shift=0.15,
+        hue_p=0.5, hue_max_deg=180.0,
+        sat_p=1.0, saturation=(0.4, 1.8),
+        gain_p=0.5, gains=(0.75, 1.25),
+        bc_p=1.0, brightness=(0.7, 1.3), contrast=(0.7, 1.4),
+        shuffle_p=0.2,
+        blur_p=0.5, blur_sigma=(0.3, 2.0),
+        noise_p=0.25, noise_std=(0.0, 0.04),
+        lines_p=0.3, patch_p=0.3,
+        class_weight_power=0.5,
     )
     cfg.update(overrides)
     return cfg
@@ -196,13 +228,67 @@ def _uniform(n, lo, hi, device):
     return lo + (hi - lo) * torch.rand(n, device=device)
 
 
+def random_affine(x, zoom=(0.75, 1.25), shift=0.15):
+    """Rotation by any angle, zoom (log-uniform) and shift, as one bilinear resampling with reflected borders."""
+    B, dev = x.shape[0], x.device
+    ang = _uniform(B, 0, 2 * math.pi, dev)
+    z = torch.exp(_uniform(B, math.log(zoom[0]), math.log(zoom[1]), dev))   # z > 1 magnifies
+    cos, sin = torch.cos(ang) / z, torch.sin(ang) / z
+    theta = torch.zeros(B, 2, 3, device=dev, dtype=x.dtype)
+    theta[:, 0, 0], theta[:, 0, 1], theta[:, 1, 0], theta[:, 1, 1] = cos, -sin, sin, cos
+    theta[:, :, 2] = _uniform(2 * B, -shift, shift, dev).view(B, 2)
+    grid = F.affine_grid(theta, list(x.shape), align_corners=False)
+    return F.grid_sample(x, grid, mode="bilinear", padding_mode="reflection", align_corners=False)
+
+
+def draw_artifacts(x, p_line, p_patch):
+    """Fatemeh's V4 artifacts: 1-3 thin coloured lines (mostly horizontal) and 1-2 coloured rectangles."""
+    B, _, H, W = x.shape
+    for b in range(B):
+        if random.random() < p_line:
+            for _ in range(random.randint(1, 3)):
+                col = torch.rand(3, 1, 1, device=x.device) * 1.2
+                a, t = random.uniform(0.4, 1.0), random.randint(1, 3)
+                if random.random() < 0.8:
+                    pos = random.randint(0, H - 3)
+                    x[b, :, pos:pos + t, :] = (1 - a) * x[b, :, pos:pos + t, :] + a * col
+                else:
+                    pos = random.randint(0, W - 3)
+                    x[b, :, :, pos:pos + t] = (1 - a) * x[b, :, :, pos:pos + t] + a * col
+        if random.random() < p_patch:
+            for _ in range(random.randint(1, 2)):
+                h, w = random.randint(8, 60), random.randint(8, 60)
+                i, j = random.randint(0, H - h), random.randint(0, W - w)
+                col, a = torch.rand(3, 1, 1, device=x.device), random.uniform(0.4, 1.0)
+                x[b, :, i:i + h, j:j + w] = (1 - a) * x[b, :, i:i + h, j:j + w] + a * col
+    return x
+
+
 def augment(x, cfg):
-    """Training augmentations on a (B, 3, H, W) batch in [0, 1]; order: hue -> brightness/contrast -> blur -> noise."""
+    """Training augmentations on a (B, 3, H, W) batch in [0, 1].
+
+    Order: geometry -> hue -> saturation -> channel gains -> brightness/contrast -> channel shuffle
+           -> blur -> noise -> lines/rectangles -> clamp to [0, 1].
+    """
     n, dev = x.shape[0], x.device
+    g = lambda key: cfg.get(key, 0.0)          # new keys may be missing in older configs
+    if g("geo_p") > 0:
+        m = _pick(n, cfg["geo_p"], dev)
+        if m.any():
+            x[m] = random_affine(x[m], cfg["geo_zoom"], cfg["geo_shift"])
     if cfg["hue_p"] > 0:
         m = _pick(n, cfg["hue_p"], dev)
         if m.any():
             x[m] = rotate_hue(x[m], _uniform(int(m.sum()), -cfg["hue_max_deg"], cfg["hue_max_deg"], dev))
+    if g("sat_p") > 0:
+        m = _pick(n, cfg["sat_p"], dev)
+        if m.any():
+            grey = x[m].mean(1, keepdim=True)
+            x[m] = grey + (x[m] - grey) * _uniform(int(m.sum()), *cfg["saturation"], dev).view(-1, 1, 1, 1)
+    if g("gain_p") > 0:
+        m = _pick(n, cfg["gain_p"], dev)
+        if m.any():
+            x[m] = x[m] * _uniform(3 * int(m.sum()), *cfg["gains"], dev).view(-1, 3, 1, 1)
     if cfg["bc_p"] > 0:
         m = _pick(n, cfg["bc_p"], dev)
         if m.any():
@@ -210,6 +296,11 @@ def augment(x, cfg):
             xb = x[m] * _uniform(k, *cfg["brightness"], dev).view(-1, 1, 1, 1)
             gray = (0.299 * xb[:, 0] + 0.587 * xb[:, 1] + 0.114 * xb[:, 2]).mean((1, 2)).view(-1, 1, 1, 1)
             x[m] = (xb - gray) * _uniform(k, *cfg["contrast"], dev).view(-1, 1, 1, 1) + gray
+    if g("shuffle_p") > 0:
+        m = _pick(n, cfg["shuffle_p"], dev)
+        if m.any():
+            perm = torch.argsort(torch.rand(int(m.sum()), 3, device=dev), dim=1)      # one permutation per image
+            x[m] = torch.gather(x[m], 1, perm.view(-1, 3, 1, 1).expand(-1, 3, *x.shape[2:]))
     if cfg["blur_p"] > 0:
         m = _pick(n, cfg["blur_p"], dev)
         if m.any():
@@ -219,7 +310,17 @@ def augment(x, cfg):
         if m.any():
             std = _uniform(int(m.sum()), *cfg["noise_std"], dev).view(-1, 1, 1, 1)
             x[m] = x[m] + torch.randn_like(x[m]) * std
+    if g("lines_p") > 0 or g("patch_p") > 0:
+        x = draw_artifacts(x, g("lines_p"), g("patch_p"))
     return x.clamp(0, 1)
+
+
+def class_weights(y_train, power):
+    """CE weights (1/frequency)^power, scaled so that the average weight over the training images is 1."""
+    freq = np.bincount(y_train, minlength=C.N_CLASSES) / len(y_train)
+    w = (1.0 / np.maximum(freq, 1e-8)) ** power
+    w = w / (w * freq).sum()
+    return torch.tensor(w, dtype=torch.float32, device=DEVICE)
 
 
 # ============================================================================ #
@@ -270,7 +371,9 @@ def train_fold(cfg, data, k, verbose=True):
     model = make_model(cfg)
     optimizer = timm.optim.create_optimizer_v2(model, "adamw", lr=cfg["lr"], weight_decay=cfg["weight_decay"])
     scheduler = make_scheduler(optimizer, cfg, math.ceil(len(tr_idx) / cfg["batch_size"]))
-    criterion = nn.CrossEntropyLoss(label_smoothing=cfg["label_smoothing"])
+    power = cfg.get("class_weight_power", 0.0)
+    criterion = nn.CrossEntropyLoss(weight=class_weights(y[tr_idx], power) if power > 0 else None,
+                                    label_smoothing=cfg["label_smoothing"])
     y_va = y[va_idx]
 
     history = []
