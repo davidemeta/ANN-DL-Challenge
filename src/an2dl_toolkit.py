@@ -172,7 +172,8 @@ class SafeGeM(nn.Module):
 
 def create_timm_model_and_optimizer(
     model_name, num_classes, lr=3e-4, weight_decay=1e-2, layer_decay=0.75,
-    pretrained=True, local_weights_path=None, use_gem_on_resnet=False, drop_rate=0.2
+    pretrained=True, local_weights_path=None, use_gem_on_resnet=False, drop_rate=0.2,
+    **model_kwargs
 ):
     """
     Supports offline weights via pretrained_cfg_overlay and explicitly applies
@@ -184,7 +185,8 @@ def create_timm_model_and_optimizer(
         pretrained=pretrained,
         num_classes=num_classes,
         drop_rate=drop_rate,
-        pretrained_cfg_overlay=overlay
+        pretrained_cfg_overlay=overlay,
+        **model_kwargs  # e.g. drop_path_rate=0.1
     )
     if use_gem_on_resnet and 'resnet' in model_name and hasattr(model, 'global_pool'):
         model.global_pool = nn.Sequential(SafeGeM(), nn.Flatten(1))
@@ -311,11 +313,13 @@ def train_vision_epoch(model, ema_model, loader, optimizer, scheduler, criterion
     return total_loss / max(1, n_seen)
 
 @torch.no_grad()
-def predict_with_tta(eval_model, loader, allow_hflip=True, allow_vflip=False):
+def predict_with_tta(eval_model, loader, allow_hflip=True, allow_vflip=False, d4=False):
     """
     Always use ema_model for inference!
     Keeps resolution fixed to avoid breaking ViT pos_embed or stride-32 divisibility.
     Disable allow_hflip if left/right orientation is semantic (e.g., ECG, digits, asymmetric X-rays).
+    d4=True: average the 8 dihedral views (4 rot90 x optional hflip) and ignore the flip flags;
+    for rotation-invariant images such as galaxies.
     """
     eval_model.eval()
     all_logits = []
@@ -323,6 +327,15 @@ def predict_with_tta(eval_model, loader, allow_hflip=True, allow_vflip=False):
         images = batch[0] if isinstance(batch, (list, tuple)) else batch
         images = images.to(DEVICE, non_blocking=True, memory_format=torch.channels_last)
         with torch.amp.autocast(device_type=DEVICE.type, dtype=AMP_DTYPE, enabled=(DEVICE.type == 'cuda')):
+            if d4:
+                logits_sum, n_views = 0.0, 0
+                for flip in (False, True):
+                    view = torch.flip(images, dims=[-1]) if flip else images
+                    for k in range(4):
+                        logits_sum = logits_sum + eval_model(torch.rot90(view, k, dims=(-2, -1))).float()
+                        n_views += 1
+                all_logits.append((logits_sum / n_views).cpu().numpy())
+                continue
             logits_sum = eval_model(images)
             n_views = 1
             if allow_hflip:

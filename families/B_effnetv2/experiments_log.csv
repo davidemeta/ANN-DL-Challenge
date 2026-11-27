@@ -1,0 +1,13 @@
+date,fold,train_set,experiment,kaggle,note,f1_clean,f1_shifted,f1_cigar_clean,f1_cigar_shifted,minutes
+2026-11-27 18:28,0,clean (keep=True),B_effnetv2s_ablation,,control (rotation + flip) (kept),0.8259,0.7957,0.7619,0.5185,7.9
+2026-11-27 18:28,0,clean (keep=True),B_effnetv2s_ablation,,+ hue rotation (kept),0.8281,0.8067,0.5556,0.5556,7.8
+2026-11-27 18:28,0,clean (keep=True),B_effnetv2s_ablation,,+ blur (kept),0.8526,0.8472,0.8,0.8696,7.8
+2026-11-27 18:28,0,clean (keep=True),B_effnetv2s_ablation,,+ photometric + translation (kept),0.8447,0.8377,0.7,0.7273,7.9
+2026-11-27 18:28,0,clean (keep=True),B_effnetv2s,,"D4 TTA, chosen augmentation",0.8447,0.8377,0.7,0.7273,7.9
+2026-11-27 18:28,1,clean (keep=True),B_effnetv2s,,"D4 TTA, chosen augmentation",0.824,0.83,0.7,0.7,7.9
+2026-11-27 18:28,2,clean (keep=True),B_effnetv2s,,"D4 TTA, chosen augmentation",0.8351,0.8304,0.6667,0.6667,7.9
+2026-11-27 18:28,3,clean (keep=True),B_effnetv2s,,"D4 TTA, chosen augmentation",0.808,0.8198,0.7826,0.75,7.9
+2026-11-27 18:28,4,clean (keep=True),B_effnetv2s,,"D4 TTA, chosen augmentation",0.8222,0.8238,0.8182,0.8696,7.9
+2026-11-27 18:28,OOF,clean (keep=True),B_effnetv2s,,"OOF, TTA D4 (submission.csv)",0.827,0.8285,0.7379,0.7477,
+2026-11-27 18:28,OOF,clean (keep=True),B_effnetv2s,,"OOF, TTA D4 + hue x3",0.8265,0.8299,0.7593,0.7736,
+2026-11-27 18:28,OOF,clean (keep=True),B_effnetv2s,,"OOF, TTA D4 + hue weighted",0.8299,0.8303,0.7547,0.7736,

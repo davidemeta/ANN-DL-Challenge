@@ -1,0 +1,42 @@
+# Family A - ConvNeXtV2-tiny fine-tuning. Override any key from the command line:
+#   python families/A_convnextv2/train.py --set color_mode=gray --set aug.hue_p=0
+# Experiment order (fold 0, see DECISIONS.md):
+#   1. curves: --folds 0 --no-test --epochs 40 --set eval_every=1 --run-name A_curves
+#   2. LR:     --folds 0 --no-test --epochs 15 --set lr=5e-5 --run-name A_lr5e-5   (also 1e-4, 2e-4)
+#   3. colour: --folds 0 --no-test --set color_mode=gray --run-name A_gray
+run_name: A_convnext_s42
+owner: davide
+model: convnextv2_tiny.fcmae_ft_in22k_in1k   # fallback: convnext_small.fb_in22k_ft_in1k
+pretrained: true
+img_size: 256            # native size, no resize (224 = faster, loses fine detail)
+color_mode: rgb          # rgb | gray (ablation: colour + hue aug vs grayscale)
+
+head_epochs: 3           # phase 1 (LP-FT): backbone frozen, only the head learns; 0 = off
+head_lr: 1.0e-3
+epochs: 30               # phase 2, full network; fixed: final EMA weights are used, no best-epoch picking
+batch_size: 32
+lr: 1.0e-4
+weight_decay: 0.05
+layer_decay: 0.95        # timm splits ConvNeXtV2-tiny into 20 layer groups: stem at 0.95^19 = 38% of lr
+                         # (0.8 would leave the stem at 1.4%: the playbook's 0.8 meant per stage)
+warmup_frac: 0.05
+drop_rate: 0.2           # dropout before the head
+drop_path_rate: 0.1      # stochastic depth
+label_smoothing: 0.1
+ema_decay: 0.998
+mixup_alpha: 0.0         # 0 = off; CutMix is never used (it can erase the bar or the core)
+seed: 42
+eval_every: 5            # quick validation (EMA, no TTA) every N epochs and at the end
+
+aug:                     # values from eda/outputs/davide/07_test_distortions/augmentation_params.json
+  hue_p: 0.4             # HSV hue rotation, >= 35% of test images are tinted
+  hue_max_turn: 0.5      # 0.5 = full circle (+-180 deg)
+  blur_p: 0.35           # ~32% of test images are blurred
+  blur_sigma: [0.4, 1.2] # px at 256, applied before the resize
+  brightness: 0.1
+  contrast: 0.1
+  rotate: true           # any angle + horizontal flip
+  zoom: [0.95, 1.05]
+
+predict_test: true       # false for quick experiments (skips the 2.9 GB test cache)
+save_checkpoints: true

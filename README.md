@@ -4,7 +4,7 @@ Shared repo for the Artificial Neural Networks & Deep Learning challenge (Polimi
 
 ## Layout
 - `src/` – shared code (lead only): `an2dl_toolkit.py`, `metric.py`, `data.py`, `submit.py`
-- `shared/` – `train_folds.csv`, `cleaning_ids.csv` (frozen on Day 3, tag `freeze-day3`)
+- `shared/` – `folds.csv` (2,995 clean images, 5 folds) and `val_shift_plan.csv` (fixed test-like distortion per validation image), from Elia's `eda/elia/03_validation_setup.ipynb` (frozen on Day 3, tag `freeze-day3`)
 - `eda/` – EDA: `00_eda_davide.ipynb` (executed notebook: findings, decisions, conclusions), scripts `01_audit` / `02_embeddings` / `03_test_distortions` (`_davide.py`), `EDA_GUIDE_davide.md` (how to read every output); outputs in `eda/outputs/` (gitignored)
 - `families/` – one folder per person/family
 - `runs/` – one small JSON per run (`{family}_{model}_s{seed}.json`)

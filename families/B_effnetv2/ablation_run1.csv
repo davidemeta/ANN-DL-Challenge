@@ -1,0 +1,5 @@
+step,f1_clean,f1_shifted,f1_cigar_clean,f1_cigar_shifted,minutes,kept
+control (rotation + flip),0.8259,0.7957,0.7619,0.5185,7.9,True
++ hue rotation,0.8281,0.8067,0.5556,0.5556,7.8,True
++ blur,0.8526,0.8472,0.8,0.8696,7.8,True
++ photometric + translation,0.8447,0.8377,0.7,0.7273,7.9,True
