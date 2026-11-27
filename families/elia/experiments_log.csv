@@ -35,3 +35,5 @@ date,train_set,kaggle,note,fold,experiment,f1_clean,f1_shifted,f1_cigar_clean,f1
 2026-11-27 17:12,clean (keep=True),,+ hue + blur + brightness/contrast + noise,3,e4_hue_blur_bc_noise,0.8329,0.829,0.8148,0.7857,1.5654527465502421
 2026-11-27 17:12,clean (keep=True),,+ hue + blur + brightness/contrast + noise,4,e4_hue_blur_bc_noise,0.8434,0.84,0.8333,0.8696,1.561211093266805
 2026-11-27 17:12,clean (keep=True),0.8562,+ hue + blur + brightness/contrast + noise,OOF,e4_hue_blur_bc_noise,0.8466,0.8436,0.7863,0.7966,
+2026-11-27 18:00,clean (keep=True),0.8678,"Fatemeh V4 (Kaggle notebook batchsize4-v4-convnexttiny-sharedsplit): free rot/zoom/shift, strong colour+blur, lines/patches, class weights^0.5, 25 ep",OOF,v4_fatemeh,0.8587,0.8513,0.8361,0.8197,
+2026-11-27 19:00,clean (keep=True),0.8645,"ensemble E3 + V4, mean of probabilities w=0.5 (notebook 12)",OOF,ensemble_e3_v4,0.8581,0.8569,0.85,0.85,
