@@ -376,18 +376,42 @@ def _nll(p, y):
 # ============================================================================ #
 # One fold                                                                     #
 # ============================================================================ #
-def train_fold(cfg, data, k, verbose=True):
-    seed_everything(cfg["seed"] + k)
-    fold_ids = data["folds"].fold.to_numpy()
-    tr_idx, va_idx = np.where(fold_ids != k)[0], np.where(fold_ids == k)[0]
+def flag_weights(cfg, data, k, tr_idx):
+    """Per-image training weights for outer fold k from a label-issue file (cfg["label_flags"]).
+
+    Flagged images get weight cfg["flag_weight"] (0 = removed from training); all others 1.
+    Validation images are never touched: the flags only concern the training part of fold k.
+    """
+    w = np.ones(len(tr_idx), np.float32)
+    path = cfg.get("label_flags")
+    if not path:
+        return w
+    flags = pd.read_csv(path)
+    flags = flags[(flags.outer_fold == k) & flags.flagged.astype(bool)]
+    is_flag = data["folds"].id.iloc[tr_idx].isin(set(flags.id)).to_numpy()
+    w[is_flag] = cfg.get("flag_weight", 0.0)
+    return w
+
+
+def fit_model(cfg, data, tr_idx, va_idx=None, w_tr=None, tag="", verbose=True):
+    """Train one model on the images tr_idx (optional per-image weights w_tr).
+
+    If va_idx is given, both validations (no TTA) are evaluated after every epoch and returned as history.
+    """
     X, y = data["X_clean"], data["y"]
+    if w_tr is not None:                       # weight 0 = image removed from training
+        keep = w_tr > 0
+        tr_idx, w_tr = tr_idx[keep], w_tr[keep]
+        if np.all(w_tr == 1):
+            w_tr = None
+    w_of = None if w_tr is None else dict(zip(tr_idx.tolist(), w_tr.tolist()))
     model = make_model(cfg)
     optimizer = timm.optim.create_optimizer_v2(model, "adamw", lr=cfg["lr"], weight_decay=cfg["weight_decay"])
     scheduler = make_scheduler(optimizer, cfg, math.ceil(len(tr_idx) / cfg["batch_size"]))
     power = cfg.get("class_weight_power", 0.0)
     criterion = nn.CrossEntropyLoss(weight=class_weights(y[tr_idx], power) if power > 0 else None,
-                                    label_smoothing=cfg["label_smoothing"])
-    y_va = y[va_idx]
+                                    label_smoothing=cfg["label_smoothing"],
+                                    reduction="none" if w_of else "mean")
 
     history = []
     for epoch in range(cfg["epochs"]):
@@ -403,26 +427,96 @@ def train_fold(cfg, data, k, verbose=True):
             target = torch.as_tensor(y[b], device=DEVICE)
             with torch.autocast("cuda", dtype=torch.bfloat16, enabled=USE_AMP):
                 loss = criterion(model(normalize(x)), target)
+            if w_of:                           # weighted mean over the batch
+                wb = torch.tensor([w_of[j] for j in b.tolist()], device=DEVICE, dtype=torch.float32)
+                loss = (loss.float() * wb).sum() / wb.sum()
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
             optimizer.step()
             scheduler.step()
             losses.append(loss.item())
-        p_c = predict_proba(model, data["X_clean"][va_idx], cfg, tta=False)
-        p_s = predict_proba(model, data["X_shift"][va_idx], cfg, tta=False)
-        history.append({"fold": k, "epoch": epoch + 1, "train_loss": float(np.mean(losses)),
-                        "val_loss_clean": _nll(p_c, y_va), "val_loss_shifted": _nll(p_s, y_va),
-                        "f1_clean": C.evaluate(y_va, p_c.argmax(1))["f1_weighted"],
-                        "f1_shifted": C.evaluate(y_va, p_s.argmax(1))["f1_weighted"],
-                        "seconds": time.time() - t0})
+        h = {"epoch": epoch + 1, "train_loss": float(np.mean(losses)), "seconds": time.time() - t0}
+        if va_idx is not None:
+            y_va = y[va_idx]
+            p_c = predict_proba(model, data["X_clean"][va_idx], cfg, tta=False)
+            p_s = predict_proba(model, data["X_shift"][va_idx], cfg, tta=False)
+            h.update({"val_loss_clean": _nll(p_c, y_va), "val_loss_shifted": _nll(p_s, y_va),
+                      "f1_clean": C.evaluate(y_va, p_c.argmax(1))["f1_weighted"],
+                      "f1_shifted": C.evaluate(y_va, p_s.argmax(1))["f1_weighted"]})
+        history.append(h)
         if verbose:
-            h = history[-1]
-            print(f"{cfg['run_name']} | fold {k} | epoch {h['epoch']:2d} | train loss {h['train_loss']:.3f} | "
-                  f"F1 clean {h['f1_clean']:.3f} | F1 shifted {h['f1_shifted']:.3f} | {h['seconds']:.0f}s")
+            msg = f"{cfg['run_name']} | {tag} | epoch {h['epoch']:2d} | train loss {h['train_loss']:.3f}"
+            if va_idx is not None:
+                msg += f" | F1 clean {h['f1_clean']:.3f} | F1 shifted {h['f1_shifted']:.3f}"
+            print(msg + f" | {h['seconds']:.0f}s")
+    return model, pd.DataFrame(history)
 
+
+def train_fold(cfg, data, k, verbose=True):
+    seed_everything(cfg["seed"] + k)
+    fold_ids = data["folds"].fold.to_numpy()
+    tr_idx, va_idx = np.where(fold_ids != k)[0], np.where(fold_ids == k)[0]
+    w_tr = flag_weights(cfg, data, k, tr_idx)
+    if cfg.get("label_flags") and verbose:
+        print(f"{cfg['run_name']} | fold {k}: {int((w_tr != 1).sum())} flagged training images "
+              f"(weight {cfg.get('flag_weight', 0.0)}) out of {len(tr_idx)}")
+    model, history = fit_model(cfg, data, tr_idx, va_idx, w_tr=w_tr, tag=f"fold {k}", verbose=verbose)
+    history.insert(0, "fold", k)
     p_clean = predict_proba(model, data["X_clean"][va_idx], cfg, tta=cfg["tta"])
     p_shift = predict_proba(model, data["X_shift"][va_idx], cfg, tta=cfg["tta"])
-    return model, pd.DataFrame(history), va_idx, p_clean, p_shift
+    return model, history, va_idx, p_clean, p_shift
+
+
+# ============================================================================ #
+# Label issues: nested cross-validation inside every outer fold                #
+# ============================================================================ #
+def find_label_issues(cfg, data, name="label_flags", n_inner=5, max_p_label=0.1, min_p_pred=0.6):
+    """Flag likely wrong labels among the TRAINING images of every outer fold, without touching its validation.
+
+    For each outer fold k, its training part is split again into n_inner folds; a model trained on
+    n_inner - 1 of them predicts the remaining one (8-view TTA), so every training image of fold k gets
+    an out-of-fold probability computed by a model that never saw it nor any image of the validation fold k.
+    An image is flagged when the model confidently disagrees with its label:
+        p(label) < max_p_label  and  p(predicted class) > min_p_pred.
+    Saves outputs/<name>/flags.csv (one row per outer fold and training image). Cached: re-running loads it.
+    """
+    out = OUT_DIR / name
+    f_out = out / "flags.csv"
+    if f_out.exists():
+        print(f"{name}: already computed, loading {f_out}")
+        return pd.read_csv(f_out)
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "config.json").write_text(json.dumps({**cfg, "n_inner": n_inner, "max_p_label": max_p_label,
+                                                 "min_p_pred": min_p_pred}, indent=2))
+    from sklearn.model_selection import StratifiedKFold
+    folds, y = data["folds"], data["y"]
+    rows, t_start = [], time.time()
+    for k in sorted(folds.fold.unique()):
+        tr_idx = np.where(folds.fold.to_numpy() != k)[0]
+        probs = np.zeros((len(tr_idx), C.N_CLASSES), np.float32)
+        inner = StratifiedKFold(n_inner, shuffle=True, random_state=cfg["seed"] + k)
+        for j, (a, b) in enumerate(inner.split(tr_idx, y[tr_idx])):
+            t0 = time.time()
+            seed_everything(cfg["seed"] + 100 * k + j)
+            model, _ = fit_model(cfg, data, tr_idx[a], tag=f"outer {k} inner {j}", verbose=False)
+            probs[b] = predict_proba(model, data["X_clean"][tr_idx[b]], cfg, tta=cfg["tta"])
+            del model
+            if DEVICE == "cuda":
+                torch.cuda.empty_cache()
+            print(f"{name} | outer fold {k} | inner {j}: {len(a)} train / {len(b)} predicted | "
+                  f"{(time.time() - t0) / 60:.1f} min", flush=True)
+        yk = y[tr_idx]
+        p_label = probs[np.arange(len(tr_idx)), yk]
+        pred = probs.argmax(1)
+        flagged = (p_label < max_p_label) & (probs.max(1) > min_p_pred)
+        acc = (pred == yk).mean()
+        print(f"{name} | outer fold {k}: inner OOF accuracy {acc:.3f}, flagged {flagged.sum()} / {len(tr_idx)}\n")
+        rows.append(pd.DataFrame({"outer_fold": k, "id": folds.id.iloc[tr_idx].to_numpy(), "label": yk,
+                                  "pred": pred, "p_label": p_label, "p_pred": probs.max(1), "flagged": flagged}))
+    flags = pd.concat(rows, ignore_index=True)
+    flags.to_csv(f_out, index=False)
+    print(f"{name} done in {(time.time() - t_start) / 60:.1f} min")
+    return flags
 
 
 # ============================================================================ #
