@@ -103,6 +103,7 @@ def reference_config(**overrides):
 
 
 def seed_everything(seed):
+    seed = int(seed)                 # numpy integers are rejected by random.seed in Python >= 3.11
     random.seed(seed); np.random.seed(seed); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
 
 
@@ -491,7 +492,7 @@ def find_label_issues(cfg, data, name="label_flags", n_inner=5, max_p_label=0.1,
     from sklearn.model_selection import StratifiedKFold
     folds, y = data["folds"], data["y"]
     rows, t_start = [], time.time()
-    for k in sorted(folds.fold.unique()):
+    for k in sorted(int(f) for f in folds.fold.unique()):
         tr_idx = np.where(folds.fold.to_numpy() != k)[0]
         probs = np.zeros((len(tr_idx), C.N_CLASSES), np.float32)
         inner = StratifiedKFold(n_inner, shuffle=True, random_state=cfg["seed"] + k)
