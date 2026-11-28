@@ -94,6 +94,14 @@ def v4_config(**overrides):
     return cfg
 
 
+def reference_config(**overrides):
+    """Reference after phase 3b (notebook 13): V4 without class weights and without lines/rectangles."""
+    cfg = v4_config(run_name="ref_256", note="reference: V4 - class weights - lines/rectangles",
+                    class_weight_power=0.0, lines_p=0.0, patch_p=0.0)
+    cfg.update(overrides)
+    return cfg
+
+
 def seed_everything(seed):
     random.seed(seed); np.random.seed(seed); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
 
@@ -144,12 +152,17 @@ MEAN = torch.tensor([0.485, 0.456, 0.406], device=DEVICE).view(1, 3, 1, 1)
 STD = torch.tensor([0.229, 0.224, 0.225], device=DEVICE).view(1, 3, 1, 1)
 
 
+def resize(x, img_size):
+    """Bilinear resize of a (B, 3, H, W) batch to img_size x img_size (no-op if already that size)."""
+    if x.shape[-1] == img_size:
+        return x
+    return F.interpolate(x, size=img_size, mode="bilinear", antialias=True, align_corners=False)
+
+
 def to_float(x_uint8, img_size):
     """(B, H, W, 3) uint8 -> (B, 3, H, W) float in [0, 1] on the device, resized if needed."""
     x = torch.as_tensor(x_uint8, device=DEVICE).permute(0, 3, 1, 2).float() / 255.0
-    if x.shape[-1] != img_size:
-        x = F.interpolate(x, size=img_size, mode="bilinear", antialias=True, align_corners=False)
-    return x
+    return resize(x, img_size)
 
 
 def normalize(x):
@@ -383,7 +396,10 @@ def train_fold(cfg, data, k, verbose=True):
         perm = np.random.permutation(tr_idx)
         for i in range(0, len(perm), cfg["batch_size"]):
             b = perm[i:i + cfg["batch_size"]]
-            x = augment(random_dihedral(to_float(X[b], cfg["img_size"])), cfg)
+            # augment at the native 256 px (so blur sigma, noise grain, line widths mean the same thing at
+            # every input size, and match the test images, which are altered at 256 px), then resize
+            x = to_float(X[b], X.shape[1])
+            x = resize(augment(random_dihedral(x), cfg), cfg["img_size"])
             target = torch.as_tensor(y[b], device=DEVICE)
             with torch.autocast("cuda", dtype=torch.bfloat16, enabled=USE_AMP):
                 loss = criterion(model(normalize(x)), target)
