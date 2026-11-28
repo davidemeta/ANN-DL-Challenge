@@ -97,3 +97,15 @@ date,train_set,kaggle,note,fold,experiment,f1_clean,f1_shifted,f1_cigar_clean,f1
 2026-11-28 02:54,clean (keep=True),,reference at 384 px,3,ref_384,0.8428,0.8516,0.8462,0.8462,4.284454758961996
 2026-11-28 02:54,clean (keep=True),,reference at 384 px,4,ref_384,0.8581,0.8566,0.88,0.88,4.286183762550354
 2026-11-28 02:54,clean (keep=True),0.8656,reference at 384 px,OOF,ref_384,0.8537,0.8534,0.8403,0.8403,
+2026-11-28 11:34,clean (keep=True),,ref_256 - flagged labels removed from training (nested CV),0,lbl_drop,0.8624,0.8624,0.8696,0.9091,2.2776119232177736
+2026-11-28 11:34,clean (keep=True),,ref_256 - flagged labels removed from training (nested CV),1,lbl_drop,0.8452,0.8354,0.8333,0.7826,2.35812885761261
+2026-11-28 11:34,clean (keep=True),,ref_256 - flagged labels removed from training (nested CV),2,lbl_drop,0.84,0.8347,0.8182,0.8182,2.1402534643809
+2026-11-28 11:34,clean (keep=True),,ref_256 - flagged labels removed from training (nested CV),3,lbl_drop,0.8464,0.8397,0.88,0.9167,2.1403698047002155
+2026-11-28 11:34,clean (keep=True),,ref_256 - flagged labels removed from training (nested CV),4,lbl_drop,0.8443,0.843,0.88,0.88,2.0638729532559714
+2026-11-28 11:34,clean (keep=True),,ref_256 - flagged labels removed from training (nested CV),OOF,lbl_drop,0.8479,0.8431,0.8571,0.8621,
+2026-11-28 11:49,clean (keep=True),,ref_256 - flagged labels down-weighted to 0.3 (nested CV),0,lbl_down,0.8737,0.8736,0.8333,0.8333,2.23738778034846
+2026-11-28 11:49,clean (keep=True),,ref_256 - flagged labels down-weighted to 0.3 (nested CV),1,lbl_down,0.8399,0.8329,0.7273,0.7826,2.1591008146603903
+2026-11-28 11:49,clean (keep=True),,ref_256 - flagged labels down-weighted to 0.3 (nested CV),2,lbl_down,0.8309,0.8262,0.8182,0.8182,2.164851355552673
+2026-11-28 11:49,clean (keep=True),,ref_256 - flagged labels down-weighted to 0.3 (nested CV),3,lbl_down,0.8483,0.8452,0.8462,0.8462,2.160606062412262
+2026-11-28 11:49,clean (keep=True),,ref_256 - flagged labels down-weighted to 0.3 (nested CV),4,lbl_down,0.8599,0.8544,0.88,0.88,2.149226951599121
+2026-11-28 11:49,clean (keep=True),,ref_256 - flagged labels down-weighted to 0.3 (nested CV),OOF,lbl_down,0.8505,0.8462,0.8235,0.8333,
